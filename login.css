@@ -2,9 +2,6 @@ body {
     background-image: linear-gradient(to right, rgba(255, 0, 0, 0), rgba(125, 117, 46, 0.345));
 }
 
-body {
-    margin: 100px 400px;
-}
 
 h1 {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -13,23 +10,29 @@ h1 {
     border-radius: 5px;
     background-color: rgb(222, 200, 168);
     background-size: 6px 6px;
-    margin: 80px 200px
+    width: 400px;
+    margin: 10% auto 40px;
+}
+
+form {
+    width: 300px;
+    margin: 0 auto;
 }
 
 label {
-    margin-left: 260px;
     font-size: large;
     font-family: Arial, Helvetica, sans-serif;
 }
 
 input {
+    width: 300px;
     display: block;
     margin-bottom: 3%;
-    margin-left: 260px;
     font-size: large;
     background-color: rgba(235, 219, 194, 0.512);
     border-color: rgba(165, 42, 42, 0.081);
 }
+
 
 #lg {
     background-color: rgb(213, 174, 125);
@@ -38,8 +41,9 @@ input {
     text-align: center;
     font-size: x-large;
     border-radius: 5px;
-    padding: 10px 80px;
-    margin: 30px 250px
+    padding: 10px 0;
+    width: 300px;
+    margin-bottom: 20px;
 }
 
 #lg:hover {
@@ -47,6 +51,7 @@ input {
 }
 
 #signup {
+    display: block;
     background-color: rgba(213, 173, 125, 0.142);
     border-color: rgba(165, 42, 42, 0.312);
     color: black;
@@ -55,8 +60,7 @@ input {
     font-family: Arial, Helvetica, sans-serif;
     font-size: x-large;
     border-radius: 5px;
-    padding: 11px 7px;
-    margin: 10px 250px
+    padding: 11px 0;
 }
 
 #signup:hover {
