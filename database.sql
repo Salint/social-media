@@ -5,3 +5,7 @@ CREATE TABLE Users (
 	`email` VARCHAR(256) NOT NULL,
 	`bio` VARCHAR(256) NOT NULL
 );
+CREATE TABLE Sessions (
+	`id` VARCHAR(256) NOT NULL UNIQUE,
+	`userid` INT(11) REFERENCES Users(id) UNIQUE
+)
