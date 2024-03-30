@@ -24,6 +24,9 @@ class UserService {
 			else {
 				const hash = await wp.encP(password, "base64");
 				await conn.query("INSERT INTO users (`username`, `password`, `email`, `bio`) VALUES (?, ?, ?, ?)", [username, hash, email, ""]);
+			
+				const ids = await conn.query("SELECT id FROM users WHERE username=?", [username]);
+				return ids[0].id;
 			}
 
 		}

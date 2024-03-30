@@ -1,6 +1,7 @@
 const { Router } = require("express");
 const ErrorEx = require("../util/ErrorEx");
 const UserService = require("../services/user.service");
+const SessionService = require("../services/session.service");
 
 const AuthController = Router();
 
@@ -14,9 +15,14 @@ AuthController.get("/signup", async function (req, res) {
 		}
 		else {
 			const userService = new UserService();
-			await userService.createUser(username, email, password);
+			const id = await userService.createUser(username, email, password);
 
-			res.status(200).send("Success");
+			const sessionID = await (new SessionService()).createNewUserSession(id);
+
+			res.status(200).send({
+				message: "Success",
+				sessionID
+			});
 		}
 	}
 	catch(error) {
