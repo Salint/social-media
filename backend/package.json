@@ -1,0 +1,24 @@
+{
+  "name": "social-media-backend",
+  "version": "1.0.0",
+  "description": "The backend for social media",
+  "main": "./src/index.js",
+  "scripts": {
+    "start": "node ./src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Salint/social-media.git"
+  },
+  "author": "Salint",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/Salint/social-media/issues"
+  },
+  "homepage": "https://github.com/Salint/social-media#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2"
+  }
+}
