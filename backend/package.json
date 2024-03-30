@@ -18,9 +18,11 @@
   },
   "homepage": "https://github.com/Salint/social-media#readme",
   "dependencies": {
+    "body-parser": "^1.20.2",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
-    "mariadb": "^3.3.0"
+    "mariadb": "^3.3.0",
+    "whirlpool-js": "^1.0.0"
   }
 }

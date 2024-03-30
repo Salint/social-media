@@ -4,7 +4,7 @@ class DatabaseService {
 	static pool;
 	static conn;
 
-	static start(host, username, password, name) {
+	static async start(host, username, password, name) {
 		this.pool = mariadb.createPool({
 			host,
 			user: username,
@@ -12,7 +12,7 @@ class DatabaseService {
 			database: name
 		});
 
-		this.conn = this.pool.getConnection();
+		this.conn = await this.pool.getConnection();
 
 		console.log("Connected to database successfully");
 	}
