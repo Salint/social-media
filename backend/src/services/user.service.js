@@ -53,6 +53,18 @@ class UserService {
 
 		}
 	}
+	async getUserProfile(userid) {
+		const results = await DatabaseService.conn.query("SELECT username, bio FROM users WHERE id=?", [userid]);
+
+		if(results.length == 0) {
+			throw new ErrorEx("That account doesn't exist.", "auth/account-not-found", 404);
+		}
+		else {
+
+			return results[0];
+		}
+
+	}
 }
 
 module.exports = UserService;
