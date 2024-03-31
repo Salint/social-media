@@ -18,7 +18,7 @@ class UserService {
 
 			const users = await conn.query("SELECT username FROM users WHERE username=?", username);
 			
-			if(users.length != 0) {
+			if(users.length !== 0) {
 				throw new ErrorEx("Username already taken.", "auth/username-taken", 400);
 			}
 			else {
@@ -27,6 +27,28 @@ class UserService {
 			
 				const ids = await conn.query("SELECT id FROM users WHERE username=?", [username]);
 				return ids[0].id;
+			}
+
+		}
+	}
+	async loginUser(username, password) {
+		const conn = DatabaseService.conn;
+		
+		const result = await conn.query("SELECT id, password FROM users WHERE username=?", [username]);
+
+		if(result.length === 0) {
+			throw new ErrorEx("That account doesn't exist.", "auth/account-not-found", 404);
+		}
+		else {
+			const hash = await wp.encP(password, "base64");
+			const user = result[0];
+
+			if(user.password === hash) {
+				
+				return user.id;
+			}
+			else {
+				throw new ErrorEx("Incorrect password.", "auth/incorrect-password", 403);
 			}
 
 		}

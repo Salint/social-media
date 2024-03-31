@@ -21,6 +21,43 @@ AuthController.get("/signup", async function (req, res) {
 
 			res.status(200).send({
 				message: "Success",
+				id,
+				sessionID
+			});
+		}
+	}
+	catch(error) {
+		if(error instanceof ErrorEx) {
+			res.status(error.statusCode).send({
+				message: error.message,
+				code: error.code
+			});
+		}
+		else {
+			console.log(error);
+			res.status(500).send("Server Error. Please try again later.");
+		}
+	}
+});
+
+AuthController.get("/login", async function (req, res) {
+
+	const { username, password } = req.body;
+
+	try {
+		if(!username || !password) {
+			throw new ErrorEx("Please supply username and password.", "auth/insufficent-creds", 400);
+		}
+		else {
+			
+			const userService = new UserService();
+			const id = await userService.loginUser(username, password);
+
+			const sessionID = await (new SessionService()).createExistingUserSession(id);
+
+			res.status(200).send({
+				message: "Success",
+				id,
 				sessionID
 			});
 		}
