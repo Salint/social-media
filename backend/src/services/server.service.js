@@ -4,6 +4,10 @@ const bodyParser = require("body-parser");
 
 // Controllers
 const AuthController = require("../controllers/auth.controller");
+const ProfileController = require("../controllers/profile.controller");
+
+// Middleware 
+const AuthMiddleware = require("../middleware/auth.middleware");
 
 class ServerService {
 	
@@ -16,6 +20,7 @@ class ServerService {
 		app.use(bodyParser.urlencoded({ extended: false }));
 
 		app.use("/auth", AuthController);
+		app.use("/profile", AuthMiddleware, ProfileController);
 
 		app.listen(port);
 		console.log("Listening on PORT " + port);
