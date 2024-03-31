@@ -65,6 +65,9 @@ class UserService {
 		}
 
 	}
+	async updateProfile(userid, username, bio) {
+		await DatabaseService.conn.query("UPDATE users SET username=?, bio=? WHERE id=?", [username, bio, userid]);
+	}
 }
 
 module.exports = UserService;
