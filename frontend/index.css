@@ -23,6 +23,7 @@ label {
     flex: 1;
     justify-content: center;
     align-items: center;
+
 }
 #search-flex label {
     font-size: 30px;
@@ -34,6 +35,7 @@ label {
     padding: 5px 10px;
     border: none;
     border-radius: 20px;
+    background-color: rgb(213, 174, 125);
 }
 #profile{ 
     border-radius: 50%;
@@ -61,6 +63,7 @@ label {
     margin: 0;
     padding: 0;
     margin-left: 10px;
+    background-color: rgb(157, 128, 91);
 }
 #post{
     border-top: 10px;
