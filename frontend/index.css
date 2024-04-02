@@ -65,10 +65,41 @@ label {
     margin-left: 10px;
     background-color: rgb(157, 128, 91);
 }
+#messenger{ border-radius: 50%;
+    border-style: solid;
+    height: 50px;
+    width: 50px;
+    margin: 0;
+    padding: 0;
+    margin-left: 10px;
+    background-color: rgb(157, 128, 91);
+}
 #post{
     border-top: 10px;
-    margin-left: 300;
-    
+    border-radius: 10px;
+    width: fit-content;
+    margin: 0 auto;
+    text-align: center;
+    padding: 10px;
+    background-color: rgb(157, 128, 91);
+}
+#input-post {
+    background: rgb(213, 174, 125);
+    color: black;
+    border: none;
+    outline: none;   
+    padding: 10px;
+    width: 300px;
+    border-radius: 5px;
+}
+#create_post{ 
+    background: rgb(213, 174, 125);
+    height: 30px;
+    width: 50px;
+    margin: 0;
+    padding: 0;
+    margin-left: 10px;
+    font-size: large;
 }
 
 #buttons { 
