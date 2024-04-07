@@ -1,5 +1,5 @@
 body {
-    background-image: linear-gradient(to right, rgba(255, 0, 0, 0), rgba(125, 117, 46, 0.345));
+    background-image: linear-gradient(to right, #b4c8d5, #d5eaf8ac);
 }
 
 
@@ -8,7 +8,7 @@ h1 {
     font-style: oblique;
     text-align: center;
     border-radius: 5px;
-    background-color: rgb(222, 200, 168);
+    background-color: #998C73;
     background-size: 6px 6px;
     width: 400px;
     margin: 10% auto 40px;
@@ -29,13 +29,13 @@ input {
     display: block;
     margin-bottom: 3%;
     font-size: large;
-    background-color: rgba(235, 219, 194, 0.512);
+    background-color: #998c7340;
     border-color: rgba(165, 42, 42, 0.081);
 }
 
 
 #lg {
-    background-color: rgb(213, 174, 125);
+    background-color: #867458;
     font-family: Arial, Helvetica, sans-serif;
     border-color: rgba(165, 42, 42, 0.255);
     text-align: center;
@@ -47,7 +47,7 @@ input {
 }
 
 #lg:hover {
-    background-color: rgb(157, 128, 91);
+    background-color: #898462;
 }
 
 #signup {
