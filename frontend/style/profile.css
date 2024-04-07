@@ -83,9 +83,11 @@ button {
     border-radius: 10px;
     width: 50%;
 }
-button:hover{
+
+button:hover {
     background-color: rgb(172, 147, 117);
 }
+
 #users-post {
     border-top: 10px;
     border-radius: 10px;

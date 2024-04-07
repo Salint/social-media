@@ -84,6 +84,10 @@ button {
     width: 50%;
 }
 
+button:hover {
+    background-color: rgba(157, 128, 92, 0.848);
+}
+
 @media (max-width: 900px) {
     .container {
         width: 90%;
@@ -133,6 +137,10 @@ button {
     display: block;
     width: 120px;
     height: 30px;
+}
+
+.post-actions__widget:hover {
+    background-color: #1f140458;
 }
 
 /* *  Placeholder contrast * */
