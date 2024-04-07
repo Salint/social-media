@@ -83,6 +83,33 @@ button {
     border-radius: 10px;
     width: 50%;
 }
+button:hover{
+    background-color: rgb(172, 147, 117);
+}
+#users-post {
+    border-top: 10px;
+    border-radius: 10px;
+    width: fit-content;
+    margin: 2 auto;
+    text-align: center;
+    padding: 10px;
+    background-color: rgb(157, 128, 91);
+
+}
+
+#avatar {
+    border-radius: 50%;
+
+    border-style: solid;
+    height: 50px;
+    width: 50px;
+    text-align: right;
+    margin: 0;
+    padding: 0;
+
+    overflow: hidden;
+
+}
 
 @media (max-width: 900px) {
     .container {
