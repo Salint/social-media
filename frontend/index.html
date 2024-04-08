@@ -23,7 +23,7 @@
 
         </div>
         <div id="buttons">
-            <button id="profile"> <img src="https://st3.depositphotos.com/6672868/13701/v/450/depositphotos_137014128-stock-illustration-user-profile-icon.jpg" id="profile-img"> </button>
+            <button class="profile"> <img src="https://st3.depositphotos.com/6672868/13701/v/450/depositphotos_137014128-stock-illustration-user-profile-icon.jpg" class="profile-img"> </button>
             <button id="logout">
                 <i class="fa fa-sign-out"></i>
             </button>
@@ -35,15 +35,28 @@
     <p>
     <div id="timeline">
         <div id="user-post">
-            <!-- <input id="input-post" type="text" placeholder="What is on your mind"> -->
+           
             <textarea placeholder="What's on your mind?" name="post-content" id="input-post" rows="5"></textarea>
             <button id="create_post"> post </button>
         </div>
         <div id="users-post">
-            <button id="profile"> <img src="https://st3.depositphotos.com/6672868/13701/v/450/depositphotos_137014128-stock-illustration-user-profile-icon.jpg" id="profile-img"> </button>
-            <div>ahmed selim</div>
+           
+            <div class="container"> 
+                <button class="profile"> 
+                    <img src="https://st3.depositphotos.com/6672868/13701/v/450/depositphotos_137014128-stock-illustration-user-profile-icon.jpg" class="profile-img"> 
+                </button>
+                <div class="user-text">
+                    <h1>Afaffff</h1>
+                    <h2>4/8/2024</h2>
+                </div>
+            </div>
             <br>
-            <textarea name="post-content" id="input-post" rows="15"> pla pla pla pla pla </textarea>
+            <p class="post-content" rows="15"> pla pla pla pla pla</p>
+            <div class="reactions">
+                <button class="action"><i class="fa-solid fa-heart"></i> love</button> 
+                <button class="action"><i class="fa-sharp fa-solid fa-comments"></i> comment</button>
+            </div>
+           
         </div>
     </div>
     </p>

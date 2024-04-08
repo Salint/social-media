@@ -2,6 +2,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
@@ -43,10 +45,11 @@ label {
     background-color: rgb(213, 174, 125);
 }
 
-#profile {
+.profile {
     border-radius: 50%;
 
-    border-style: solid;
+    border: 5px solid rgb(91, 63, 25);
+    cursor: pointer;
     height: 50px;
     width: 50px;
     margin: 0;
@@ -56,7 +59,7 @@ label {
 
 }
 
-#profile-img {
+.profile-img {
     width: 100%;
     height: 100%;
 
@@ -65,17 +68,6 @@ label {
 }
 
 #logOut {
-    border-radius: 50%;
-    border-style: solid;
-    height: 50px;
-    width: 50px;
-    margin: 0;
-    padding: 0;
-    margin-left: 10px;
-    background-color: rgb(157, 128, 91);
-}
-
-#messenger {
     border-radius: 50%;
     border-style: solid;
     height: 50px;
@@ -97,6 +89,7 @@ label {
 }
 
 #users-post {
+   
     border-top: 10px;
     border-radius: 10px;
     width: fit-content;
@@ -106,22 +99,43 @@ label {
     background-color: rgb(157, 128, 91);
 
 }
-
-#avatar {
-    border-radius: 50%;
-
-    border-style: solid;
-    height: 50px;
-    width: 50px;
-    text-align: right;
-    margin: 0;
-    padding: 0;
-
-    overflow: hidden;
-
+.container{
+    display: flex;
+    align-items: center;
 }
 
-#input-post {
+.reactions {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+.action {
+    border: none;
+    background: transparent;
+    margin: 0;
+    padding: 0;
+    flex: 1;
+    cursor: pointer;
+    background: rgb(213, 174, 125);
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+.action + .action {
+    margin-left: 10px;
+}
+.user-text {
+    text-align: left;
+    margin-left: 10px;
+}
+.user-text h1 {
+    font-size: 18px;
+}
+.user-text h2 {
+    font-size: 15px;
+    color: rgb(76, 47, 10);
+    font-weight: 100;
+}
+#input-post, .post-content {
     background: rgb(213, 174, 125);
     color: black;
     border: none;
@@ -130,7 +144,9 @@ label {
     width: 300px;
     border-radius: 5px;
 }
-
+.post-content {
+    text-align: left;
+}
 #create_post {
     background: rgb(213, 174, 125);
     height: 30px;
