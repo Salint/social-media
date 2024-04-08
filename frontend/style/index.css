@@ -79,15 +79,31 @@ label {
 }
 
 #user-post {
-    border-top: 10px;
-    border-radius: 10px;
-    width: fit-content;
-    margin: 0 auto;
+    width: 500px;
+    margin: 30px auto;
     text-align: center;
-    padding: 10px;
+    padding: 20px;
     background-color: rgb(157, 128, 91);
+    border-radius: 20px;
+    text-align: left;
+}
+#user-post h1 {
+    font-size: 30px;
+    color: white;
+    font-weight: 200;
+    margin-bottom: 10px;
 }
 
+#create_post {
+    background: rgb(213, 174, 125);
+    height: 30px;
+    width: 50px;
+    display: block;
+    width: 100%;
+    border: none;
+    margin-top: 5px;
+    color: black;
+}
 #users-post {
    
     border-top: 10px;
@@ -141,20 +157,12 @@ label {
     border: none;
     outline: none;
     padding: 10px;
-    width: 300px;
+    width: 100%;
     border-radius: 5px;
+    resize: none;
 }
 .post-content {
     text-align: left;
-}
-#create_post {
-    background: rgb(213, 174, 125);
-    height: 30px;
-    width: 50px;
-    margin: 0;
-    padding: 0;
-    margin-left: 10px;
-    font-size: large;
 }
 
 #buttons {
