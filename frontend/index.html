@@ -37,7 +37,9 @@
         <div id="user-post">
             <h1>Create a new post!</h1>
             <textarea placeholder="What's on your mind?" name="post-content" id="input-post" rows="5"></textarea>
-            <button id="create_post"> post </button>
+            <form>
+              <button type="submit" id="create_post"> post </button>
+            </form>  
         </div>
         <div id="users-post">
            
@@ -62,8 +64,13 @@
               </button>
               <div class="user-comment">
                 <h1>Afaffff</h1>
-                <input type="text" placeholder="Write a comment" name="comment" id="comment">
-                
+              <div class="post-comment">
+                  <form class="flex-comment-area">
+                     <input type="text" placeholder="Write a comment" name="comment" class="comment">
+                    <button type="submit" class="post-the-comment"><i class="fa-solid fa-paper-plane"></i></button>
+                 </form> 
+              </div>
+               
               </div>
            </div>
         </div>

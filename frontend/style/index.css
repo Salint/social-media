@@ -135,20 +135,39 @@ label {
     text-align: left;
     margin-left: 10px;
     flex: 1;
+    
 }
 .user-comment h1 {
     font-size: 15px;
     margin-bottom: 4px;
     
 }
-#comment{
+.comment{
     font-size: 15px;
     padding: 5px 10px;
     border: none;
     border-radius: 20px;
     background-color: rgb(213, 174, 125);
     width: 100%;
+    flex: 1;
 }
+.flex-comment-area {
+    display: flex;
+}
+#post-comment{
+    display: flex;
+}
+.post-the-comment {
+    background: rgb(213, 174, 125);
+    height: 30px;
+    width: 50px;
+    display: block;
+    border: none;
+    border-radius: 20px;
+    color: rgb(35, 32, 32);
+    margin-left: 5px;
+}
+
 .action {
     border: none;
     background: transparent;
