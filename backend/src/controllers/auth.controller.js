@@ -55,10 +55,14 @@ AuthController.get("/login", async function (req, res) {
 
 			const sessionID = await (new SessionService()).createExistingUserSession(id);
 
-			res.status(200).send({
+			res
+			.status(200)
+			.cookie("sessionId", sessionID, {
+				expires: new Date(Date.now() + 24 * 3600000)
+			})
+			.send({
 				message: "Success",
-				id,
-				sessionID
+				id
 			});
 		}
 	}

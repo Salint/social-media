@@ -2,7 +2,7 @@ const SessionService = require("../services/session.service");
 const ErrorEx = require("../util/ErrorEx");
 
 async function AuthMiddleware (req, res, next) {
-	const { sessionId } = req.body;
+	const { sessionId } = req.cookies;
 
 	try {
 		if(!sessionId) {

@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
 
 // Controllers
 const AuthController = require("../controllers/auth.controller");
@@ -18,6 +19,7 @@ class ServerService {
 		app.use(cors());
 		app.use(bodyParser.json());
 		app.use(bodyParser.urlencoded({ extended: false }));
+		app.use(cookieParser());
 
 		app.use("/auth", AuthController);
 		app.use("/profile", AuthMiddleware, ProfileController);
