@@ -29,7 +29,7 @@ AuthController.post("/signup", async function (req, res) {
 	}
 	catch(error) {
 		if(error instanceof ErrorEx) {
-			res.redirect(`/?username=${username}&email=${email}&message=${error.message}`);
+			res.redirect(`/signup?username=${username}&email=${email}&message=${error.message}`);
 		}
 		else {
 			console.log(error);
@@ -58,18 +58,12 @@ AuthController.post("/login", async function (req, res) {
 			.cookie("sessionId", sessionID, {
 				expires: new Date(Date.now() + 24 * 3600000)
 			})
-			.send({
-				message: "Success",
-				id
-			});
+			.redirect("/");
 		}
 	}
 	catch(error) {
 		if(error instanceof ErrorEx) {
-			res.status(error.statusCode).send({
-				message: error.message,
-				code: error.code
-			});
+			res.redirect(`/?username=${username}&message=${error.message}`);
 		}
 		else {
 			console.log(error);
