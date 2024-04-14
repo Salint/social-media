@@ -19,3 +19,7 @@ CREATE TABLE Follows (
 	`followerId` INT(11) REFERENCES Users(id),
 	`followingId` INT(11) REFERENCES Users(id)
 )
+CREATE TABLE Likes (
+	`userid` INT(11) REFERENCES Users(id),
+	`postid` INT(11) REFERENCES Posts(id)
+)
