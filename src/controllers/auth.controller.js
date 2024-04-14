@@ -72,4 +72,8 @@ AuthController.post("/login", async function (req, res) {
 	}
 });
 
+AuthController.post("/logout", async function (req, res) {
+	res.clearCookie("sessionId").redirect("/");
+});
+
 module.exports = AuthController;

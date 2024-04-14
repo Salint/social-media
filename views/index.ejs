@@ -4,7 +4,7 @@
     <title>
         Home Page
     </title>
-    <link rel="stylesheet" href="style/index.css">
+    <link rel="stylesheet" href="/static/style/index.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
  </head>
 
@@ -18,18 +18,17 @@
                 <input type="text" placeholder="Search.." name="search">
                 <button type="submit"><i class="fa fa-search"></i></button>
             </form>
-            <!-- <label for="search"> Search <i class="fa fa-magnifying-glass"></i></label>
-
-            <input type="text" id="search" placeholder="JohnSmith18"> -->
 
         </div>
         <div id="buttons">
             <button class="profile"> <img
                     src="https://st3.depositphotos.com/6672868/13701/v/450/depositphotos_137014128-stock-illustration-user-profile-icon.jpg"
                     class="profile-img"> </button>
-            <button id="logout">
-                <i class="fa fa-sign-out"></i>
-            </button>
+            <form action="/auth/logout" method="post">
+                <button id="logout">
+                    <i class="fa fa-sign-out"></i>
+                </button>
+            </form>
 
         </div>
 
