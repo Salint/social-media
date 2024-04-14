@@ -5,7 +5,7 @@ const SessionService = require("../services/session.service");
 
 const AuthController = Router();
 
-AuthController.get("/signup", async function (req, res) {
+AuthController.post("/signup", async function (req, res) {
 
 	const { username, email, password } = req.body;
 
@@ -40,7 +40,7 @@ AuthController.get("/signup", async function (req, res) {
 	}
 });
 
-AuthController.get("/login", async function (req, res) {
+AuthController.post("/login", async function (req, res) {
 
 	const { username, password } = req.body;
 
