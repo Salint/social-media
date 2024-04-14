@@ -6,6 +6,7 @@ const cookieParser = require("cookie-parser");
 // Controllers
 const AuthController = require("../controllers/auth.controller");
 const ProfileController = require("../controllers/profile.controller");
+const PostController = require("../controllers/post.controller");
 
 // Middleware 
 const AuthMiddleware = require("../middleware/auth.middleware");
@@ -23,6 +24,7 @@ class ServerService {
 
 		app.use("/auth", AuthController);
 		app.use("/profile", AuthMiddleware, ProfileController);
+		app.use("/post", AuthMiddleware, PostController);
 
 		app.listen(port);
 		console.log("Listening on PORT " + port);
