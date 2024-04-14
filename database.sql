@@ -13,7 +13,7 @@ CREATE TABLE Posts (
 	`id` INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	`userid` INT(11) REFERENCES Users(id),
 	`content` VARCHAR(1024) NOT NULL,
-	`postedOn` DATE NOT NULL
+	`postedOn` TIMESTAMP NOT NULL
 )
 CREATE TABLE Follows (
 	`followerId` INT(11) REFERENCES Users(id),

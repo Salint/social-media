@@ -35,4 +35,27 @@ PostController.post("/", async function (req, res) {
 	}
 });
 
+PostController.get("/", async function (req, res) {
+
+	try {
+		const postService = new PostService();
+
+		const posts = await postService.getPostsByFollowing(res.locals.userid);
+
+		res.status(200).send(posts);
+	}
+	catch(error) {
+		if(error instanceof ErrorEx) {
+			res.status(error.statusCode).send({
+				message: error.message,
+				code: error.code
+			});
+		}
+		else {
+			console.log(error);
+			res.status(500).send("Server Error. Please try again later.");
+		}
+	}
+});
+
 module.exports = PostController;

@@ -68,6 +68,16 @@ class UserService {
 	async updateProfile(userid, username, bio) {
 		await DatabaseService.conn.query("UPDATE users SET username=?, bio=? WHERE id=?", [username, bio, userid]);
 	}
+	async getFollowingList(userid) {
+		const conn = DatabaseService.conn;
+
+		const result = await conn.query("SELECT * FROM follows WHERE followerId=?", [userid]);
+		const following = [];
+
+		result.forEach((v) => following.push(v.followingId));
+
+		return following;
+	}
 	async followUser(followerId, followingId) {
 		const conn = DatabaseService.conn;
 
