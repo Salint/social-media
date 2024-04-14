@@ -11,7 +11,7 @@ UserController.get("/:userid", async function (req, res) {
 		const userService = new UserService();
 		const profile = await userService.getUserProfile(userid);
 
-		res.status(200).send(profile);
+		res.render("profile", { profile });
 	}
 	catch(error) {
 		if(error instanceof ErrorEx) {
