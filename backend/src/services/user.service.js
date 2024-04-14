@@ -54,13 +54,18 @@ class UserService {
 		}
 	}
 	async getUserProfile(userid) {
-		const results = await DatabaseService.conn.query("SELECT username, bio FROM users WHERE id=?", [userid]);
+		const conn = DatabaseService.conn;
+
+		const results = await conn.query("SELECT username, bio FROM users WHERE id=?", [userid]);
 
 		if(results.length == 0) {
 			throw new ErrorEx("That account doesn't exist.", "auth/account-not-found", 404);
 		}
 		else {
-
+			
+			results[0].followers = Number((await conn.query("SELECT COUNT(followerId) FROM follows WHERE followingId=?", [userid]))[0]["COUNT(followerId)"]);
+			results[0].following = Number((await conn.query("SELECT COUNT(followingId) FROM follows WHERE followerId=?", [userid]))[0]["COUNT(followingId)"]);
+		
 			return results[0];
 		}
 
