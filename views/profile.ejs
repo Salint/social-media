@@ -13,7 +13,6 @@
 </head>
 
 <body>
-    <form>
         <div class="container">
             <div id="inline">
                 <div class="image">
@@ -32,9 +31,19 @@
                         </div>
                     </div>
 
-                    <button class="follow">
-                        <span class="msg-follow">Follow</span>
-                    </button>
+                    <% if(isFollowing) { %>
+                        <form action="/user/<%= profile.id %>/unfollow" method="post">
+                            <button type="submit" class="follow">
+                                <span class="msg-follow">Unfollow</span>
+                            </button>
+                        </form>
+                    <% } else { %>
+                        <form action="/user/<%= profile.id %>/follow"  method="post">
+                            <button type="submit"  class="follow">
+                                <span class="msg-follow">Follow</span>
+                            </button>
+                        </form>
+                    <% } %>
                 </div>
             </div>
             <h1><%= profile.username %></h1>
@@ -60,8 +69,6 @@
 
             </div>
         </div>
-
-    </form>
 </body>
 
 </html>

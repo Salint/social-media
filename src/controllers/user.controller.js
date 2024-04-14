@@ -10,8 +10,9 @@ UserController.get("/:userid", async function (req, res) {
 	try {
 		const userService = new UserService();
 		const profile = await userService.getUserProfile(userid);
+		const isFollowing = await userService.isFollowing(res.locals.userid, userid);
 
-		res.render("profile", { profile });
+		res.render("profile", { profile, isFollowing });
 	}
 	catch(error) {
 		if(error instanceof ErrorEx) {
@@ -35,9 +36,7 @@ UserController.post("/:userid/follow", async function (req, res) {
 
 		await (new UserService).followUser(res.locals.userid, userid);
 
-		res.status(200).send({
-			message: "Success"
-		});
+		res.redirect("/user/" + userid);
 	}
 	catch(error) {
 		if(error instanceof ErrorEx) {
@@ -61,9 +60,7 @@ UserController.post("/:userid/unfollow", async function (req, res) {
 
 		await (new UserService).unfollowUser(res.locals.userid, userid);
 
-		res.status(200).send({
-			message: "Success"
-		});
+		res.redirect("/user/" + userid);
 	}
 	catch(error) {
 		if(error instanceof ErrorEx) {

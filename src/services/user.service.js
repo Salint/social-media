@@ -56,7 +56,7 @@ class UserService {
 	async getUserProfile(userid) {
 		const conn = DatabaseService.conn;
 
-		const results = await conn.query("SELECT username, bio FROM users WHERE id=?", [userid]);
+		const results = await conn.query("SELECT id, username, bio FROM users WHERE id=?", [userid]);
 
 		if(results.length == 0) {
 			throw new ErrorEx("That account doesn't exist.", "auth/account-not-found", 404);
@@ -105,6 +105,11 @@ class UserService {
 		else {
 			await conn.query("DELETE FROM follows WHERE followerId=? AND followingId=?", [followerId, followingId]);
 		}
+	}
+	async isFollowing(followerId, followingId) {
+		const result = await DatabaseService.conn.query("SELECT * FROM follows WHERE followerId=? AND followingId=?", [followerId, followingId]);
+
+		return result.length !== 0;
 	}
 }
 

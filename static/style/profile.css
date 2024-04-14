@@ -168,17 +168,10 @@ p {
 * {
     box-sizing: border-box;
 }
-
-form.example {
+form {
     display: flex;
-}
-
-
-
-form.example::after {
-    content: "";
-    clear: both;
-    display: table;
+    align-items: center;
+    justify-content: center;
 }
 
 .profile {
