@@ -17,10 +17,14 @@ class ServerService {
 
 		const app = express();
 
+		app.set("view engine", "ejs");
+
+
 		app.use(cors());
 		app.use(bodyParser.json());
 		app.use(bodyParser.urlencoded({ extended: false }));
 		app.use(cookieParser());
+		app.use("/static", express.static("static"));
 
 		app.use("/auth", AuthController);
 		app.use("/user", AuthMiddleware, UserController);
