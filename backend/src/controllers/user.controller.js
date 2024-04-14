@@ -2,9 +2,9 @@ const { Router } = require("express");
 const UserService = require("../services/user.service");
 const ErrorEx = require("../util/ErrorEx");
 
-const ProfileController = Router();
+const UserController = Router();
 
-ProfileController.get("/:userid", async function (req, res) {
+UserController.get("/:userid", async function (req, res) {
 	const { userid } = req.params;
 
 	try {
@@ -26,7 +26,60 @@ ProfileController.get("/:userid", async function (req, res) {
 		}
 	}
 });
-ProfileController.patch("/update",  async function (req, res) {
+
+UserController.post("/:userid/follow", async function (req, res) {
+
+	const { userid } = req.params;
+
+	try {
+
+		await (new UserService).followUser(res.locals.userid, userid);
+
+		res.status(200).send({
+			message: "Success"
+		});
+	}
+	catch(error) {
+		if(error instanceof ErrorEx) {
+			res.status(error.statusCode).send({
+				message: error.message,
+				code: error.code
+			});
+		}
+		else {
+			console.log(error);
+			res.status(500).send("Server Error. Please try again later.");
+		}
+	}
+
+});
+UserController.post("/:userid/unfollow", async function (req, res) {
+
+	const { userid } = req.params;
+
+	try {
+
+		await (new UserService).unfollowUser(res.locals.userid, userid);
+
+		res.status(200).send({
+			message: "Success"
+		});
+	}
+	catch(error) {
+		if(error instanceof ErrorEx) {
+			res.status(error.statusCode).send({
+				message: error.message,
+				code: error.code
+			});
+		}
+		else {
+			console.log(error);
+			res.status(500).send("Server Error. Please try again later.");
+		}
+	}
+
+});
+UserController.patch("/update",  async function (req, res) {
 	const { username, bio } = req.body;
 	
 	try {
@@ -59,4 +112,4 @@ ProfileController.patch("/update",  async function (req, res) {
 	}
 })
 
-module.exports = ProfileController;
+module.exports = UserController;

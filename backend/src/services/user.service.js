@@ -68,6 +68,29 @@ class UserService {
 	async updateProfile(userid, username, bio) {
 		await DatabaseService.conn.query("UPDATE users SET username=?, bio=? WHERE id=?", [username, bio, userid]);
 	}
+	async followUser(followerId, followingId) {
+		const conn = DatabaseService.conn;
+
+		const result = await conn.query("SELECT * FROM follows WHERE followerId=? AND followingId=?", [followerId, followingId]);
+
+		if(result.length !== 0) {
+			throw new ErrorEx("You're already following that person", "auth/already-following", 400);
+		}
+		else {
+			await conn.query("INSERT INTO follows VALUES (?, ?)", [followerId, followingId]);
+		}
+	}
+	async unfollowUser(followerId, followingId) {
+		const conn = DatabaseService.conn;
+		const result = await conn.query("SELECT * FROM follows WHERE followerId=? AND followingId=?", [followerId, followingId]);
+
+		if(result.length === 0) {
+			throw new ErrorEx("You're not following that person", "auth/not-following", 400);
+		}
+		else {
+			await conn.query("DELETE FROM follows WHERE followerId=? AND followingId=?", [followerId, followingId]);
+		}
+	}
 }
 
 module.exports = UserService;

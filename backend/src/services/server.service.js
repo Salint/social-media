@@ -5,7 +5,7 @@ const cookieParser = require("cookie-parser");
 
 // Controllers
 const AuthController = require("../controllers/auth.controller");
-const ProfileController = require("../controllers/profile.controller");
+const UserController = require("../controllers/user.controller");
 const PostController = require("../controllers/post.controller");
 
 // Middleware 
@@ -23,7 +23,7 @@ class ServerService {
 		app.use(cookieParser());
 
 		app.use("/auth", AuthController);
-		app.use("/profile", AuthMiddleware, ProfileController);
+		app.use("/user", AuthMiddleware, UserController);
 		app.use("/post", AuthMiddleware, PostController);
 
 		app.listen(port);

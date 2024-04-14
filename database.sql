@@ -15,3 +15,7 @@ CREATE TABLE Posts (
 	`content` VARCHAR(1024) NOT NULL,
 	`postedOn` DATE NOT NULL
 )
+CREATE TABLE Follows (
+	`followerId` INT(11) REFERENCES Users(id),
+	`followingId` INT(11) REFERENCES Users(id)
+)
