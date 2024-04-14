@@ -1,4 +1,4 @@
-* {
+* * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -86,6 +86,7 @@ label {
     border-radius: 20px;
     text-align: left;
 }
+
 #user-post h1 {
     font-size: 30px;
     color: white;
@@ -103,8 +104,9 @@ label {
     margin-top: 5px;
     color: black;
 }
+
 #users-post {
-   
+
     border-top: 10px;
     border-radius: 10px;
     width: fit-content;
@@ -115,7 +117,8 @@ label {
     background-color: rgb(157, 128, 91);
 
 }
-.container{
+
+.container {
     display: flex;
     align-items: center;
 }
@@ -125,7 +128,8 @@ label {
     align-items: center;
     margin-top: 10px;
 }
-.comment-box{
+
+.comment-box {
     display: flex;
     align-items: center;
     margin-top: 10px;
@@ -135,14 +139,16 @@ label {
     text-align: left;
     margin-left: 10px;
     flex: 1;
-    
+
 }
+
 .user-comment h1 {
     font-size: 15px;
     margin-bottom: 4px;
-    
+
 }
-.comment{
+
+.comment {
     font-size: 15px;
     padding: 5px 10px;
     border: none;
@@ -151,12 +157,15 @@ label {
     width: 100%;
     flex: 1;
 }
+
 .flex-comment-area {
     display: flex;
 }
-#post-comment{
+
+#post-comment {
     display: flex;
 }
+
 .post-the-comment {
     background: rgb(213, 174, 125);
     height: 30px;
@@ -179,22 +188,32 @@ label {
     padding: 5px 10px;
     border-radius: 5px;
 }
-.action + .action {
+
+.action+.action {
     margin-left: 10px;
 }
+
 .user-text {
     text-align: left;
     margin-left: 10px;
 }
+
 .user-text h1 {
     font-size: 18px;
 }
+
 .user-text h2 {
     font-size: 15px;
     color: rgb(76, 47, 10);
     font-weight: 100;
 }
-#input-post, .post-content {
+
+#comment-list {
+    background: rgb(76, 47, 10);
+}
+
+#input-post,
+.post-content {
     background: rgb(213, 174, 125);
     color: black;
     border: none;
@@ -204,6 +223,7 @@ label {
     border-radius: 5px;
     resize: none;
 }
+
 .post-content {
     text-align: left;
 }
@@ -217,9 +237,11 @@ label {
 * {
     box-sizing: border-box;
 }
+
 form.example {
     display: flex;
 }
+
 /* Style the search field */
 form.example input[type=text] {
     padding: 10px;
