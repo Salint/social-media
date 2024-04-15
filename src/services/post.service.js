@@ -12,6 +12,8 @@ class PostService {
 		const userService = new UserService();
 		const followResult = await userService.getFollowingList(uid);
 
+		if(followResult.length === 0) return [];
+
 		const result = await DatabaseService.conn.query("SELECT * FROM posts WHERE userid IN (?) ORDER BY postedOn DESC", [followResult]);
 
 		for(let i = 0; i < result.length; i++) {
