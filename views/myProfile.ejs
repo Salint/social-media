@@ -13,6 +13,30 @@
 </head>
 
 <body>
+    <div id="navbar">
+        <div class="nav-flex">
+            <a href="/">Coolest team</a>
+        </div>
+        <div id="search-flex">
+            <form class="example" action="/user/search" method="get">
+                <input type="text" placeholder="Search.." name="q">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+
+        </div>
+        <div id="buttons">
+            <a href="/user" class="profile"> <img
+                    src="https://st3.depositphotos.com/6672868/13701/v/450/depositphotos_137014128-stock-illustration-user-profile-icon.jpg"
+                    class="profile-img"> </a>
+            <form action="/auth/logout" method="post">
+                <button id="logOut">
+                    <i class="fa fa-sign-out"></i>
+                </button>
+            </form>
+
+        </div>
+
+    </div>
     <div class="container">
         <div id="inline">
             <div class="image">
