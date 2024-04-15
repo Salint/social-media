@@ -113,7 +113,7 @@ PostController.post("/:postid/comment", async function (req, res) {
 
 	const { postid } = req.params;
 	const { content } = req.body;
-
+	
 	try {
 
 		await (new PostService).createComment(res.locals.userid, postid, content);
