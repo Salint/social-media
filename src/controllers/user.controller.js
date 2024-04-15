@@ -8,23 +8,36 @@ const UserController = Router();
 UserController.get("/", async function (req, res) {
 	res.redirect("/user/" + res.locals.userid);
 });
-UserController.get("/edit", async function(req, res) {
+UserController.get("/search", async function(req, res) {
 
-	const { message } = req.query;
+	const { q } = req.query;
 
 	try {
-		const userService = new UserService();
+		if(!q) {
+			throw new ErrorEx("Please supply a query", "search/no-query", 400);
+		}
+		else if(q.length === 0 ) {
+			throw new ErrorEx("Please supply a query", "search/no-query", 400);
+		}
+		else {
+			const userService = new UserService();
 
-		const profile = await userService.getUserProfile(res.locals.userid);
+			const profile = await userService.getUserId(q);
 
-		res.render("edit", { ...profile, message });
+			res.redirect("/user/" + profile);
+		}
 	}
 	catch(error) {
 		if(error instanceof ErrorEx) {
-			res.status(error.statusCode).send({
-				message: error.message,
-				code: error.code
-			});
+			if(error.code === "auth/account-not-found") {
+				res.render("404");
+			}
+			else {
+				res.status(error.statusCode).send({
+					message: error.message,
+					code: error.code
+				});
+			}
 		}
 		else {
 			console.log(error);
@@ -32,6 +45,7 @@ UserController.get("/edit", async function(req, res) {
 		}
 	}
 });
+
 UserController.get("/:userid", async function (req, res) {
 	const { userid } = req.params;
 
