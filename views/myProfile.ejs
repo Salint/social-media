@@ -93,7 +93,7 @@
                     <% } else { %>
                         <button class="action" data-liked="false" data-postid="<%= post.id %>" onclick="toggleLike(this)"><i class="fa-regular fa-heart"></i> Like</button>
                     <% } %>
-                    <button class="action"><i class="fa-sharp fa-regular fa-comments"></i> comment</button>
+                    <p><%= post.likes.length %> Likes</p>
                 </div>
                 <div class="comment-list" id="post<%= post.id %>">
                     <% post.comments.forEach(function(comment) { %>
