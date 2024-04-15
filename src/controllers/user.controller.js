@@ -8,6 +8,30 @@ const UserController = Router();
 UserController.get("/", async function (req, res) {
 	res.redirect("/user/" + res.locals.userid);
 });
+UserController.get("/edit", async function(req, res) {
+
+	const { message } = req.query;
+
+	try {
+		const userService = new UserService();
+
+		const profile = await userService.getUserProfile(res.locals.userid);
+
+		res.render("edit", { ...profile, message });
+	}
+	catch(error) {
+		if(error instanceof ErrorEx) {
+			res.status(error.statusCode).send({
+				message: error.message,
+				code: error.code
+			});
+		}
+		else {
+			console.log(error);
+			res.status(500).send("Server Error. Please try again later.");
+		}
+	}
+});
 UserController.get("/:userid", async function (req, res) {
 	const { userid } = req.params;
 
@@ -90,7 +114,8 @@ UserController.post("/:userid/unfollow", async function (req, res) {
 	}
 
 });
-UserController.patch("/update",  async function (req, res) {
+
+UserController.post("/update",  async function (req, res) {
 	const { username, bio } = req.body;
 	
 	try {
@@ -102,19 +127,12 @@ UserController.patch("/update",  async function (req, res) {
 			
 			await userService.updateProfile(res.locals.userid, username, bio ? bio : "");
 
-			res.send({
-				message: "Success",
-				username,
-				bio
-			});
+			res.redirect("/user");
 		}
 	}
 	catch(error) {
 		if(error instanceof ErrorEx) {
-			res.status(error.statusCode).send({
-				message: error.message,
-				code: error.code
-			});
+			res.redirect(`/user/edit?message=${error.message}`);
 		}
 		else {
 			console.log(error);

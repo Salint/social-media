@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>
+			Login
+		</title>
+		<link rel="stylesheet" href="/static/style/login.css">
+	</head>
+	<body>
+		<h1>
+			Update profile
+		</h1>
+		<form action="/user/update" method="post">
+			<% if(message) { %>
+				<h2><%= message %></h2>
+			<% } %>
+			<label id="usrnm" for="username">Username:</label><br>
+			<input type="text" id="username" name="username" placeholder="Enter Username"  <% if(username) { %> value="<%=username%>" <% } %>><br>
+			<label id="bio" for="bio">Bio:</label><br>
+			<input type="text" id="bio" name="bio" placeholder="Enter a Bio"  <% if(bio) { %> value="<%=bio%>" <% } %>><br>
+			<button type="submit" id="lg">Update profile</button>
+		</form>
+	</body>
+</html>
