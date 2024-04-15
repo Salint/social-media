@@ -11,6 +11,120 @@ body {
     background-image: linear-gradient(to right, rgba(255, 0, 0, 0), rgba(125, 117, 46, 0.345));
 }
 
+
+#navbar {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    border-bottom: 1px solid rgb(201, 201, 201);
+}
+
+#navbar .nav-flex {
+    flex: 1;
+}
+#navbar .nav-flex a {
+    text-decoration: none;
+    font-size: 25px;
+    color: rgb(76, 47, 10);
+    font-family: cursive;
+}
+#navbar #search-flex {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#navbar #search-flex label {
+    font-size: 30px;
+}
+
+#navbar #search {
+    margin-left: 10px;
+    font-size: 15px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 20px;
+    background-color: rgb(213, 174, 125);
+}
+
+#navbar .profile {
+    border-radius: 50%;
+
+    border: 5px solid rgb(91, 63, 25);
+    cursor: pointer;
+    height: 50px;
+    width: 50px;
+    margin: 0;
+    padding: 0;
+
+    overflow: hidden;
+
+}
+
+#navbar .profile-img {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#logOut {
+    border-radius: 50%;
+    border-style: solid;
+    height: 50px;
+    width: 50px;
+    margin: 0;
+    padding: 0;
+    margin-left: 10px;
+    background-color: rgb(157, 128, 91);
+}
+
+#navbar #buttons {
+    display: flex;
+    justify-content: flex-end;
+    flex: 1;
+}
+
+
+form.example {
+    display: flex;
+}
+
+/* Style the search field */
+form.example input[type=text] {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+    float: left;
+    width: 80%;
+    background: #f1f1f1;
+}
+
+/* Style the submit button */
+form.example button {
+    float: left;
+    width: 20%;
+    padding: 10px;
+    background: rgb(157, 128, 91);
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none;
+    cursor: pointer;
+}
+
+form.example button:hover {
+    background: rgb(213, 174, 125);
+}
+
+form.example::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
 img {
     display: inline;
 
@@ -155,8 +269,12 @@ h1 {
 
 .reactions {
     display: flex;
-    align-items: center;
     margin-top: 10px;
+    align-items: center;
+}
+.reactions p {
+    margin-left: 10px;
+    font-weight: 600;
 }
 
 .action {
@@ -164,7 +282,6 @@ h1 {
     background: transparent;
     margin: 0;
     padding: 0;
-    flex: 1;
     cursor: pointer;
     background: rgb(213, 174, 125);
     padding: 5px 10px;
@@ -173,10 +290,6 @@ h1 {
 
 .action:hover {
     background-color: rgb(172, 147, 117);
-}
-
-.action+.action {
-    margin-left: 10px;
 }
 
 .user-text {

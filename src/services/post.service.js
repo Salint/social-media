@@ -18,6 +18,7 @@ class PostService {
 
 		for(let i = 0; i < result.length; i++) {
 			result[i].author = await userService.getUserProfile(result[i].userid);
+			result[i].likes = await DatabaseService.conn.query("SELECT * FROM likes WHERE postid=?", [result[i].id]);
 			result[i].isLiked = await this.isPostLiked(uid, result[i].id);
 			result[i].comments = await this.getComments(result[i].id);
 		}
@@ -30,6 +31,7 @@ class PostService {
 
 		for(let i = 0; i < result.length; i++) {
 			result[i].isLiked = await this.isPostLiked(userid, result[i].id);
+			result[i].likes = await DatabaseService.conn.query("SELECT * FROM likes WHERE postid=?", [result[i].id]);
 			result[i].comments = await this.getComments(result[i].id);
 		}
 

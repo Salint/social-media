@@ -18,12 +18,18 @@ label {
     display: flex;
     align-items: center;
     padding: 10px 20px;
+    border-bottom: 1px solid rgb(201, 201, 201);
 }
 
 .nav-flex {
     flex: 1;
 }
-
+.nav-flex a {
+    text-decoration: none;
+    font-size: 25px;
+    color: rgb(76, 47, 10);
+    font-family: cursive;
+}
 #search-flex {
     display: flex;
     flex: 1;
@@ -122,11 +128,14 @@ label {
     display: flex;
     align-items: center;
 }
-
 .reactions {
     display: flex;
-    align-items: center;
     margin-top: 10px;
+    align-items: center;
+}
+.reactions p {
+    margin-left: 10px;
+    font-weight: 600;
 }
 .comment {
     display: flex;
@@ -207,15 +216,10 @@ label {
     background: transparent;
     margin: 0;
     padding: 0;
-    flex: 1;
     cursor: pointer;
     background: rgb(213, 174, 125);
     padding: 5px 10px;
     border-radius: 5px;
-}
-
-.action+.action {
-    margin-left: 10px;
 }
 
 .user-text {
