@@ -13,43 +13,43 @@
 </head>
 
 <body>
-    <form>
-        <div class="container">
-            <div id="inline">
-                <div class="image">
-                    <img src="https://st3.depositphotos.com/6672868/13701/v/450/depositphotos_137014128-stock-illustration-user-profile-icon.jpg" alt="Stephen">
-                </div>
-                <div class="text">
-                    <div id="stats">
-                        <div>
-                            <p>Followers</p>
-                            <p><%= profile.followers %></p>
-                        </div>
-                        <div>
-                            <p>Following</p>
-                            <p><%= profile.following %></p>
-                        </div>
-                    </div>
-
-                    <button class="edit">
-                        <span class="msg-edit">Edit</span>
-                    </button>
-                </div>
+    <div class="container">
+        <div id="inline">
+            <div class="image">
+                <img src="https://st3.depositphotos.com/6672868/13701/v/450/depositphotos_137014128-stock-illustration-user-profile-icon.jpg" alt="Stephen">
             </div>
-            <h1><%= profile.username %></h1>
-            <p class="title"><%= profile.bio %></p>
-            <div class="widget-post" aria-labelledby="post-header-title">
-                <form id="widget-form" class="widget-post__form" name="form" aria-label="post widget" action="/post/" method="post">
-                    <div class="widget-post__content">
-                        <textarea required name="content" class="widget-post__textarea "
-                            placeholder="What's in your mind?"></textarea>
+            <div class="text">
+                <div id="stats">
+                    <div>
+                        <p>Followers</p>
+                        <p><%= profile.followers %></p>
                     </div>
-                    <div class="post-actions__widget">
-                        <button type="submit" class="post-actions__publish">Post</button>
+                    <div>
+                        <p>Following</p>
+                        <p><%= profile.following %></p>
                     </div>
-                </form>
-            </div>
+                </div>
 
+                <button class="edit">
+                    <span class="msg-edit">Edit</span>
+                </button>
+            </div>
+        </div>
+        <h1><%= profile.username %></h1>
+        <p class="title"><%= profile.bio %></p>
+        <div class="widget-post" aria-labelledby="post-header-title">
+            <form id="widget-form" class="widget-post__form" name="form" aria-label="post widget" action="/post/" method="post">
+                <div class="widget-post__content">
+                    <textarea required name="content" class="widget-post__textarea "
+                        placeholder="What's in your mind?"></textarea>
+                </div>
+                <div class="post-actions__widget">
+                    <button type="submit" class="post-actions__publish">Post</button>
+                </div>
+            </form>
+        </div>
+
+        <% posts.forEach(function(post) { %>
             <div class="users-post">
                 <div class="container1">
                     <button class="profile">
@@ -68,9 +68,8 @@
                     <button class="action"><i class="fa-sharp fa-solid fa-comments"></i> comment</button>
                 </div>
             </div>
-
-
-    </form>
+        <% }); %>
+    </div>
 </body>
 
 </html>
