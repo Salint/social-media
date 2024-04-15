@@ -53,6 +53,20 @@ class UserService {
 
 		}
 	}
+	async getUserId(username) {
+		const conn = DatabaseService.conn;
+
+		const results = await conn.query("SELECT id FROM users WHERE username=?", [username]);
+
+		if(results.length === 0) {
+			throw new ErrorEx("That account doesn't exist.", "auth/account-not-found", 404);
+		}
+		else {
+
+			return results[0].id;
+		}
+
+	}
 	async getUserProfile(userid) {
 		const conn = DatabaseService.conn;
 
