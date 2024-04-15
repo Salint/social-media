@@ -15,6 +15,7 @@ class PostService {
 		const result = await DatabaseService.conn.query("SELECT * FROM posts WHERE userid IN (?) ORDER BY postedOn DESC", [followResult]);
 
 		for(let i = 0; i < result.length; i++) {
+			result[i].author = await userService.getUserProfile(result[i].userid);
 			result[i].isLiked = await this.isPostLiked(uid, result[i].id);
 			result[i].comments = await this.getComments(result[i].id);
 		}
@@ -26,6 +27,7 @@ class PostService {
 		const result = await DatabaseService.conn.query("SELECT * FROM posts WHERE userid=? ORDER BY postedOn DESC", [userid]);
 
 		for(let i = 0; i < result.length; i++) {
+			result[i].author = await userService.getUserProfile(result[i].userid);
 			result[i].isLiked = await this.isPostLiked(uid, result[i].id);
 			result[i].comments = await this.getComments(result[i].id);
 		}
@@ -67,8 +69,14 @@ class PostService {
 		await conn.query("INSERT INTO comments (userid, postid, content, postedOn) VALUES (?, ?, ?, ?)", [userid, postid, content, new Date()]);
 	}
 	async getComments(postid) {
-		const result = await DatabaseService.conn.query("SELECT * FROM comments WHERE postid=? ORDER BY postedOn DESC", [postid]);
+		const userService = new UserService();
 		
+		const result = await DatabaseService.conn.query("SELECT * FROM comments WHERE postid=? ORDER BY postedOn ASC", [postid]);
+		
+		for(let i = 0; i < result.length; i++) {
+			result[i].author = await userService.getUserProfile(result[i].userid);
+		}
+
 		return result;
 	}
 }

@@ -1,5 +1,8 @@
 const { Router } = require("express");
 const SessionService = require("../services/session.service");
+const PostService = require("../services/post.service");
+const { post } = require("./user.controller");
+const UserService = require("../services/user.service");
 
 const RootController = Router();
 
@@ -7,11 +10,17 @@ RootController.get("/", async function(req, res) {
 	if(req.cookies.sessionId) {
 		try {
 			const sessionService = new SessionService();
-			const userId = await sessionService.verifySession(req.cookies.sessionId);
+			const postService = new PostService();
+			const userService = new UserService();
 
-			res.render("index");
+			const userId = await sessionService.verifySession(req.cookies.sessionId);
+			const posts = await postService.getPostsByFollowing(userId);
+			const profile = await userService.getUserProfile(userId);
+
+			res.render("index", { profile, posts });
 		}
 		catch(error) {
+			console.log(error);
 			res.clearCookie("sessionId").redirect("/");
 		}
 	}

@@ -43,54 +43,55 @@
                 <button type="submit" id="create_post"> post </button>
             </form>
         </div>
-        <div id="users-post">
-
-            <div class="container">
-                <button class="profile">
-                    <img src="https://st3.depositphotos.com/6672868/13701/v/450/depositphotos_137014128-stock-illustration-user-profile-icon.jpg"
-                        class="profile-img">
-                </button>
-                <div class="user-text">
-                    <h1>Afaffff</h1>
-                    <h2>4/8/2024</h2>
-                </div>
-            </div>
-            <br>
-            <p class="post-content" rows="15"> pla pla pla pla pla</p>
-            <div class="reactions">
-                <button class="action"><i class="fa-solid fa-heart"></i> love</button>
-                <button class="action"><i class="fa-sharp fa-solid fa-comments"></i> comment</button>
-            </div>
-            <div class="comment-list">
-                <div class="comment">
-                    <div class="comment-img">
+        <% posts.forEach(function(post) { %>
+            <div class="users-post">
+                <div class="container">
+                    <a href="/user/<%= post.userid %>" class="profile">
                         <img src="https://st3.depositphotos.com/6672868/13701/v/450/depositphotos_137014128-stock-illustration-user-profile-icon.jpg"
                             class="profile-img">
+                    </a>
+                    <div class="user-text">
+                        <h1><%= post.author.username %></h1>
+                        <h2><%= post.postedOn.toLocaleString() %></h2>
                     </div>
-                    <div class="comment-content">
-                        <h1>Comment By Afaf</h1>
-                        <p>THIS IS THE BEST POST EVER</p>
+                </div>
+                <br>
+                <p class="post-content" rows="15"><%= post.content %></p>
+                <div class="reactions">
+                    <button class="action"><i class="fa-solid fa-heart"></i> love</button>
+                    <button class="action"><i class="fa-sharp fa-solid fa-comments"></i> comment</button>
+                </div>
+                <div class="comment-list">
+                    <% post.comments.forEach(function(comment) { %>
+                        <div class="comment">
+                            <a href="/user/<%= comment.userid %>" class="comment-img">
+                                <img src="https://st3.depositphotos.com/6672868/13701/v/450/depositphotos_137014128-stock-illustration-user-profile-icon.jpg"
+                                    class="profile-img">
+                            </a>
+                            <div class="comment-content">
+                                <h1>Comment By <%= comment.author.username %> • <%= comment.postedOn.toLocaleString() %></h1>
+                                <p><%= comment.content %></p>
+                            </div>
+                        </div>
+                    <% }) %>
+                </div>
+                <div class="comment-box">
+                    <a href="/user/<%= profile.userid %>" class="profile">
+                        <img src="https://st3.depositphotos.com/6672868/13701/v/450/depositphotos_137014128-stock-illustration-user-profile-icon.jpg"
+                            class="profile-img">
+                    </a>
+                    <div class="user-comment">
+                        <h1><%= profile.username %></h1>
+                        <div class="post-comment">
+                            <form class="flex-comment-area">
+                                <input type="text" placeholder="Write a comment" name="comment-input" class="comment-input">
+                                <button type="submit" class="post-the-comment"><i class="fa-solid fa-paper-plane"></i></button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="comment-box">
-                <button class="profile">
-                    <img src="https://st3.depositphotos.com/6672868/13701/v/450/depositphotos_137014128-stock-illustration-user-profile-icon.jpg"
-                        class="profile-img">
-                </button>
-                <div class="user-comment">
-                    <h1>Afaffff</h1>
-                    <div class="post-comment">
-                        <form class="flex-comment-area">
-                            <input type="text" placeholder="Write a comment" name="comment-input" class="comment-input">
-                            <button type="submit" class="post-the-comment"><i class="fa-solid fa-paper-plane"></i></button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-
-
-        </div>
+        <% }); %>
     </div>
     </div>
     </p>
