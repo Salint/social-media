@@ -6,8 +6,8 @@
     </title>
     <link rel="stylesheet" href="/static/style/index.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
- </head>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.8/axios.min.js" integrity="sha512-PJa3oQSLWRB7wHZ7GQ/g+qyv6r4mbuhmiDb8BjSFZ8NZ2a42oTtAq5n0ucWAwcQDlikAtkub+tPVCw4np27WCg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
 <body>
     <div id="navbar">
         <div class="nav-flex">
@@ -56,8 +56,12 @@
                 <br>
                 <p class="post-content" rows="15"><%= post.content %></p>
                 <div class="reactions">
-                    <button class="action"><i class="fa-solid fa-heart"></i> love</button>
-                    <button class="action"><i class="fa-sharp fa-solid fa-comments"></i> comment</button>
+                    <% if(post.isLiked) { %>
+                        <button class="action" data-liked="true" data-postid="<%= post.id %>" onclick="toggleLike(this)"><i class="fa-solid fa-heart"></i> Liked</button>
+                    <% } else { %>
+                        <button class="action" data-liked="false" data-postid="<%= post.id %>" onclick="toggleLike(this)"><i class="fa-regular fa-heart"></i> Like</button>
+                    <% } %>
+                    <button class="action"><i class="fa-sharp fa-regular fa-comments"></i> comment</button>
                 </div>
                 <div class="comment-list">
                     <% post.comments.forEach(function(comment) { %>
@@ -93,6 +97,22 @@
     </div>
     </div>
     </p>
+    <script>
+        function toggleLike(element) {
+            if(element.dataset.liked === "false") {
+                element.innerHTML = '<i class="fa-solid fa-heart"></i> Liked';
+                element.dataset.liked = "true";
+
+                axios.post(`${window.location.origin}/post/${element.dataset.postid}/like`, { withCredentials: true });
+            }
+            else {
+                element.innerHTML = '<i class="fa-regular fa-heart"></i> Like';
+                element.dataset.liked = "false";
+
+                axios.post(`${window.location.origin}/post/${element.dataset.postid}/unlike`, { withCredentials: true });
+            }
+        }
+    </script>
 </body>
 
 </html>
