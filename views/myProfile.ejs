@@ -71,7 +71,7 @@
                     <% } %>
                     <button class="action"><i class="fa-sharp fa-regular fa-comments"></i> comment</button>
                 </div>
-                <div class="comment-list">
+                <div class="comment-list" id="post<%= post.id %>">
                     <% post.comments.forEach(function(comment) { %>
                         <div class="comment">
                             <a href="/user/<%= comment.userid %>" class="comment-img">
@@ -93,9 +93,10 @@
                     <div class="user-comment">
                         <h1><%= profile.username %></h1>
                         <div class="post-comment">
-                            <form class="flex-comment-area">
+                            <form class="flex-comment-area" onsubmit="postComment(event)">
                                 <input type="text" placeholder="Write a comment" name="comment-input" class="comment-input">
                                 <button type="submit" class="post-the-comment"><i class="fa-solid fa-paper-plane"></i></button>
+                                <input type="hidden" value="<%= post.id %>" name="postid" />
                             </form>
                         </div>
                     </div>
@@ -117,6 +118,31 @@
 
                 axios.post(`${window.location.origin}/post/${element.dataset.postid}/unlike`, { withCredentials: true });
             }
+        }
+        function postComment(e) {
+            e.preventDefault();
+            const postid = e.target["postid"].value
+
+            document.getElementById("post" + postid).innerHTML = document.getElementById("post" + postid).innerHTML + '\
+                <div class="comment">\
+                    <a href="/user/<%= profile.userid %>" class="comment-img">\
+                        <img src="https://st3.depositphotos.com/6672868/13701/v/450/depositphotos_137014128-stock-illustration-user-profile-icon.jpg"\
+                            class="profile-img">\
+                    </a>\
+                    <div class="comment-content">\
+                        <h1>Comment By <%= profile.username %> • '+ new Date().toLocaleString() + '</h1>\
+                        <p>' + e.target["comment-input"].value + '</p>\
+                    </div>\
+                </div>\
+            ';
+            axios(`${window.location.origin}/post/${postid}/comment`, { 
+                withCredentials: true, 
+                method: "post",
+                data: {
+                    content: e.target["comment-input"].value
+                }
+            });
+            document.querySelectorAll(".comment-input").forEach(t => t.value = "");
         }
     </script>
 </body>

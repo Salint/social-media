@@ -134,10 +134,10 @@
                 withCredentials: true, 
                 method: "post",
                 data: {
-                    content: document.querySelector(".comment-input").value
+                    content: e.target["comment-input"].value
                 }
             });
-            document.querySelector(".comment-input").value = "";
+            document.querySelectorAll(".comment-input").forEach(t => t.value = "");
         }
     </script>
 </body>
