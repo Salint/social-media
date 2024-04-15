@@ -39,13 +39,13 @@
             <h1><%= profile.username %></h1>
             <p class="title"><%= profile.bio %></p>
             <div class="widget-post" aria-labelledby="post-header-title">
-                <form id="widget-form" class="widget-post__form" name="form" aria-label="post widget">
+                <form id="widget-form" class="widget-post__form" name="form" aria-label="post widget" action="/post/" method="post">
                     <div class="widget-post__content">
-                        <textarea name="post" class="widget-post__textarea "
+                        <textarea required name="content" class="widget-post__textarea "
                             placeholder="What's in your mind?"></textarea>
                     </div>
                     <div class="post-actions__widget">
-                        <button class="post-actions__publish">Post</button>
+                        <button type="submit" class="post-actions__publish">Post</button>
                     </div>
                 </form>
             </div>

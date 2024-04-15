@@ -16,9 +16,7 @@ PostController.post("/", async function (req, res) {
 
 			await postService.createPost(res.locals.userid, content);
 
-			res.status(200).send({
-				message: "Success"
-			});
+			res.redirect("/user");
 		}
 	}
 	catch(error) {
