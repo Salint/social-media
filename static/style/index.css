@@ -18,12 +18,18 @@ label {
     display: flex;
     align-items: center;
     padding: 10px 20px;
+    border-bottom: 1px solid rgb(201, 201, 201);
 }
 
 .nav-flex {
     flex: 1;
 }
-
+.nav-flex a {
+    text-decoration: none;
+    font-size: 25px;
+    color: rgb(76, 47, 10);
+    font-family: cursive;
+}
 #search-flex {
     display: flex;
     flex: 1;
