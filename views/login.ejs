@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>
+			Login
+		</title>
+		<link rel="stylesheet" href="/static/style/login.css">
+	</head>
+	<body>
+		<h1>
+			Login
+		</h1>
+		<form action="/auth/login" method="post">
+			<% if(message) { %>
+				<h2><%= message %></h2>
+			<% } %>
+			<label id="usrnm" for="username">Username:</label><br>
+			<input type="text" id="username" name="username" placeholder="Enter Username"  <% if(username) { %> value="<%=username%>" <% } %>><br>
+			<label id="pwd" for="pwd">Password:</label><br>
+			<input type="password" id="pwd" name="password" placeholder="Enter Password"  <% if(email) { %> value="<%=email%>" <% } %>><br>
+			<button type="submit" id="lg">Login</button>
+			<a id="signup" href="/signup">Create new account</a>
+		</form>
+	</body>
+</html>

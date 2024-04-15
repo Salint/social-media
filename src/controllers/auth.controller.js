@@ -7,11 +7,14 @@ const AuthController = Router();
 
 AuthController.post("/signup", async function (req, res) {
 
-	const { username, email, password } = req.body;
+	const { username, email, password, repeatPassword } = req.body;
 
 	try {
-		if(!username || !email || !password) {
+		if(!username || !email || !password || !repeatPassword) {
 			throw new ErrorEx("Please supply username, email and password.", "auth/insufficent-creds", 400);
+		}
+		else if (password !== repeatPassword) {
+			throw new ErrorEx("Passwords don't match", "auth/passwords-not-matching", 400);
 		}
 		else {
 			const userService = new UserService();
@@ -19,19 +22,14 @@ AuthController.post("/signup", async function (req, res) {
 
 			const sessionID = await (new SessionService()).createNewUserSession(id);
 
-			res.status(200).send({
-				message: "Success",
-				id,
-				sessionID
-			});
+			res.cookie("sessionId", sessionID, {
+				expires: new Date(Date.now() + 24 * 3600000)
+			}).redirect("/");
 		}
 	}
 	catch(error) {
 		if(error instanceof ErrorEx) {
-			res.status(error.statusCode).send({
-				message: error.message,
-				code: error.code
-			});
+			res.redirect(`/signup?username=${username}&email=${email}&message=${error.message}`);
 		}
 		else {
 			console.log(error);
@@ -60,24 +58,22 @@ AuthController.post("/login", async function (req, res) {
 			.cookie("sessionId", sessionID, {
 				expires: new Date(Date.now() + 24 * 3600000)
 			})
-			.send({
-				message: "Success",
-				id
-			});
+			.redirect("/");
 		}
 	}
 	catch(error) {
 		if(error instanceof ErrorEx) {
-			res.status(error.statusCode).send({
-				message: error.message,
-				code: error.code
-			});
+			res.redirect(`/?username=${username}&message=${error.message}`);
 		}
 		else {
 			console.log(error);
 			res.status(500).send("Server Error. Please try again later.");
 		}
 	}
+});
+
+AuthController.post("/logout", async function (req, res) {
+	res.clearCookie("sessionId").redirect("/");
 });
 
 module.exports = AuthController;

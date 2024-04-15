@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 
 // Controllers
+const RootController = require("../controllers/root.controller");
 const AuthController = require("../controllers/auth.controller");
 const UserController = require("../controllers/user.controller");
 const PostController = require("../controllers/post.controller");
@@ -17,11 +18,16 @@ class ServerService {
 
 		const app = express();
 
+		app.set("view engine", "ejs");
+
+
 		app.use(cors());
 		app.use(bodyParser.json());
 		app.use(bodyParser.urlencoded({ extended: false }));
 		app.use(cookieParser());
+		app.use("/static", express.static("static"));
 
+		app.use("/", RootController);
 		app.use("/auth", AuthController);
 		app.use("/user", AuthMiddleware, UserController);
 		app.use("/post", AuthMiddleware, PostController);

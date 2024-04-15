@@ -1,17 +1,56 @@
 const { Router } = require("express");
 const UserService = require("../services/user.service");
 const ErrorEx = require("../util/ErrorEx");
+const PostService = require("../services/post.service");
 
 const UserController = Router();
 
+UserController.get("/", async function (req, res) {
+	res.redirect("/user/" + res.locals.userid);
+});
+UserController.get("/edit", async function(req, res) {
+
+	const { message } = req.query;
+
+	try {
+		const userService = new UserService();
+
+		const profile = await userService.getUserProfile(res.locals.userid);
+
+		res.render("edit", { ...profile, message });
+	}
+	catch(error) {
+		if(error instanceof ErrorEx) {
+			res.status(error.statusCode).send({
+				message: error.message,
+				code: error.code
+			});
+		}
+		else {
+			console.log(error);
+			res.status(500).send("Server Error. Please try again later.");
+		}
+	}
+});
 UserController.get("/:userid", async function (req, res) {
 	const { userid } = req.params;
 
 	try {
 		const userService = new UserService();
-		const profile = await userService.getUserProfile(userid);
+		const postService = new PostService();
 
-		res.status(200).send(profile);
+		const profile = await userService.getUserProfile(userid);
+		const userProfile = await userService.getUserProfile(res.locals.userid);
+		const posts = await postService.getPostsByUser(res.locals.userid, userid);
+		
+		if(userid == res.locals.userid) {
+			res.render("myProfile", { profile, posts });
+		}
+		else {
+			const isFollowing = await userService.isFollowing(res.locals.userid, userid);
+
+			res.render("profile", { profile, userProfile, isFollowing, posts });
+		}
 	}
 	catch(error) {
 		if(error instanceof ErrorEx) {
@@ -35,9 +74,7 @@ UserController.post("/:userid/follow", async function (req, res) {
 
 		await (new UserService).followUser(res.locals.userid, userid);
 
-		res.status(200).send({
-			message: "Success"
-		});
+		res.redirect("/user/" + userid);
 	}
 	catch(error) {
 		if(error instanceof ErrorEx) {
@@ -61,9 +98,7 @@ UserController.post("/:userid/unfollow", async function (req, res) {
 
 		await (new UserService).unfollowUser(res.locals.userid, userid);
 
-		res.status(200).send({
-			message: "Success"
-		});
+		res.redirect("/user/" + userid);
 	}
 	catch(error) {
 		if(error instanceof ErrorEx) {
@@ -79,7 +114,8 @@ UserController.post("/:userid/unfollow", async function (req, res) {
 	}
 
 });
-UserController.patch("/update",  async function (req, res) {
+
+UserController.post("/update",  async function (req, res) {
 	const { username, bio } = req.body;
 	
 	try {
@@ -91,19 +127,12 @@ UserController.patch("/update",  async function (req, res) {
 			
 			await userService.updateProfile(res.locals.userid, username, bio ? bio : "");
 
-			res.send({
-				message: "Success",
-				username,
-				bio
-			});
+			res.redirect("/user");
 		}
 	}
 	catch(error) {
 		if(error instanceof ErrorEx) {
-			res.status(error.statusCode).send({
-				message: error.message,
-				code: error.code
-			});
+			res.redirect(`/user/edit?message=${error.message}`);
 		}
 		else {
 			console.log(error);

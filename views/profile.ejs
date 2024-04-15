@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        profile
+    </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/style/profile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" </head>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.8/axios.min.js" integrity="sha512-PJa3oQSLWRB7wHZ7GQ/g+qyv6r4mbuhmiDb8BjSFZ8NZ2a42oTtAq5n0ucWAwcQDlikAtkub+tPVCw4np27WCg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body>
+        <div class="container">
+            <div id="inline">
+                <div class="image">
+                    <img src="https://st3.depositphotos.com/6672868/13701/v/450/depositphotos_137014128-stock-illustration-user-profile-icon.jpg" alt="Stephen">
+                </div>
+                <div class="text">
+
+                    <div id="stats">
+                        <div>
+                            <p>Followers</p>
+                            <p><%= profile.followers %></p>
+                        </div>
+                        <div>
+                            <p>Following</p>
+                            <p><%= profile.following %></p>
+                        </div>
+                    </div>
+
+                    <% if(isFollowing) { %>
+                        <form action="/user/<%= profile.id %>/unfollow" method="post">
+                            <button type="submit" class="follow">
+                                <span class="msg-follow">Unfollow</span>
+                            </button>
+                        </form>
+                    <% } else { %>
+                        <form action="/user/<%= profile.id %>/follow"  method="post">
+                            <button type="submit"  class="follow">
+                                <span class="msg-follow">Follow</span>
+                            </button>
+                        </form>
+                    <% } %>
+                </div>
+            </div>
+            <h1><%= profile.username %></h1>
+            <p class="title"><%= profile.bio %></p>
+            <% posts.forEach(function(post) { %>
+                <div class="users-post">
+                    <div class="container1">
+                        <button class="profile">
+                            <img src="https://st3.depositphotos.com/6672868/13701/v/450/depositphotos_137014128-stock-illustration-user-profile-icon.jpg"
+                                class="profile-img">
+                        </button>
+                        <div class="user-text">
+                            <h1><%= profile.username %></h1>
+                            <h2><%= post.postedOn.toLocaleString() %></h2>
+                        </div>
+                    </div>
+                    <br>
+                    <p class="post-content" rows="15"><%= post.content %></p>
+                    <div class="reactions">
+                        <% if(post.isLiked) { %>
+                            <button class="action" data-liked="true" data-postid="<%= post.id %>" onclick="toggleLike(this)"><i class="fa-solid fa-heart"></i> Liked</button>
+                        <% } else { %>
+                            <button class="action" data-liked="false" data-postid="<%= post.id %>" onclick="toggleLike(this)"><i class="fa-regular fa-heart"></i> Like</button>
+                        <% } %>
+                        <button class="action"><i class="fa-sharp fa-regular fa-comments"></i> Comment</button>
+                    </div>
+                    <div class="comment-list" id="post<%= post.id %>">
+                        <% post.comments.forEach(function(comment) { %>
+                            <div class="comment">
+                                <a href="/user/<%= comment.userid %>" class="comment-img">
+                                    <img src="https://st3.depositphotos.com/6672868/13701/v/450/depositphotos_137014128-stock-illustration-user-profile-icon.jpg"
+                                        class="profile-img">
+                                </a>
+                                <div class="comment-content">
+                                    <h1>Comment By <%= comment.author.username %> • <%= comment.postedOn.toLocaleString() %></h1>
+                                    <p><%= comment.content %></p>
+                                </div>
+                            </div>
+                        <% }) %>
+                    </div>
+                    <div class="comment-box">
+                        <a href="/user/<%= profile.userid %>" class="profile">
+                            <img src="https://st3.depositphotos.com/6672868/13701/v/450/depositphotos_137014128-stock-illustration-user-profile-icon.jpg"
+                                class="profile-img">
+                        </a>
+                        <div class="user-comment">
+                            <h1><%= userProfile.username %></h1>
+                            <div class="post-comment">
+                                <form class="flex-comment-area" onsubmit="postComment(event)">
+                                    <input type="text" placeholder="Write a comment" name="comment-input" class="comment-input">
+                                    <button type="submit" class="post-the-comment"><i class="fa-solid fa-paper-plane"></i></button>
+                                    <input type="hidden" value="<%= post.id %>" name="postid" />
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+        <script>
+            function toggleLike(element) {
+                if(element.dataset.liked === "false") {
+                    element.innerHTML = '<i class="fa-solid fa-heart"></i> Liked';
+                    element.dataset.liked = "true";
+
+                    axios.post(`${window.location.origin}/post/${element.dataset.postid}/like`, { withCredentials: true });
+                }
+                else {
+                    element.innerHTML = '<i class="fa-regular fa-heart"></i> Like';
+                    element.dataset.liked = "false";
+
+                    axios.post(`${window.location.origin}/post/${element.dataset.postid}/unlike`, { withCredentials: true });
+                }
+            }
+            
+            function postComment(e) {
+                e.preventDefault();
+                const postid = e.target["postid"].value
+
+                document.getElementById("post" + postid).innerHTML = document.getElementById("post" + postid).innerHTML + '\
+                    <div class="comment">\
+                        <a href="/user/<%= profile.userid %>" class="comment-img">\
+                            <img src="https://st3.depositphotos.com/6672868/13701/v/450/depositphotos_137014128-stock-illustration-user-profile-icon.jpg"\
+                                class="profile-img">\
+                        </a>\
+                        <div class="comment-content">\
+                            <h1>Comment By <%= userProfile.username %> • '+ new Date().toLocaleString() + '</h1>\
+                            <p>' + e.target["comment-input"].value + '</p>\
+                        </div>\
+                    </div>\
+                ';
+                axios(`${window.location.origin}/post/${postid}/comment`, { 
+                    withCredentials: true, 
+                    method: "post",
+                    data: {
+                        content: e.target["comment-input"].value
+                    }
+                });
+                document.querySelectorAll(".comment-input").forEach(t => t.value = "");
+            }
+        </script>
+</body>
+
+</html>

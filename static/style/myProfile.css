@@ -1,3 +1,12 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
 body {
     background-image: linear-gradient(to right, rgba(255, 0, 0, 0), rgba(125, 117, 46, 0.345));
 }
@@ -7,11 +16,12 @@ img {
 
     width: 150px;
     border-radius: 50%;
+    border: 2px solid rgb(76, 47, 10);
 }
 
 .container {
     width: 700px;
-    margin: 0 auto;
+    margin: 20px auto;
 }
 
 .image {
@@ -36,11 +46,9 @@ img {
 #stats div p:nth-of-type(1) {
     font-size: 20px;
     font-weight: bold;
-    margin-bottom: -10px;
 }
 
 .text {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     padding-left: 20px;
     flex: 3;
     display: flex;
@@ -49,25 +57,9 @@ img {
 }
 
 h1 {
-    font-family: 'Lucida Sans',
-        'Lucida Sans Regular',
-        'Lucida Grande',
-        'Lucida Sans Unicode',
-        Geneva,
-        Verdana,
-        sans-serif;
     font-size: l;
 }
 
-p {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-
-}
-
-pre {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-
-}
 
 .edit {
     background-color: rgba(213, 173, 125, 0.848);
@@ -78,7 +70,7 @@ pre {
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    margin: 4px auto;
+    margin: 10px auto 0;
     cursor: pointer;
     border-radius: 10px;
     width: 50%;
@@ -98,7 +90,7 @@ pre {
     border-radius: 6px;
     box-shadow: 0 1px 2px 1px rgba(130, 130, 130, 0.1);
     background-color: #f5ddb1;
-    margin: auto;
+    margin:  20px auto;
     overflow: hidden;
     margin-bottom: 30px;
 }
@@ -137,12 +129,12 @@ pre {
     display: block;
     width: 120px;
     height: 30px;
-   text-align: center;
+    text-align: center;
     align-items: center;
     margin:0 auto;
 }
 
-#users-post {
+.users-post {
 
     border-top: 10px;
     border-radius: 10px;
@@ -151,7 +143,7 @@ pre {
     text-align: center;
     padding: 10px;
     width: 400px;
-    margin: 0 auto;
+    margin: 10px auto;
     background-color: rgb(157, 128, 91);
 
 }
@@ -250,6 +242,86 @@ form.example::after {
 }
 
 
+.comment {
+    display: flex;
+    width: 100%;
+    background: rgb(213, 174, 125);
+    margin-top: 10px;
+    align-items: center;
+    padding: 10px;
+    text-align: left;
+    border-radius: 10px;
+}
+.comment .comment-img img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.comment .comment-content {
+    flex: 1;
+    margin-left: 10px;
+}
+.comment .comment-content h1 {
+    font-size: 13px;
+    color: rgb(76, 47, 10);
+    margin: 0;
+}
+.comment .comment-content p {
+    font-size: 13px;
+    margin: 0;
+}
+
+.comment-box {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.comment-box img {
+    width: 50px;
+    height: 50px;
+}
+.user-comment {
+    text-align: left;
+    margin-left: 10px;
+    flex: 1;
+
+}
+
+.user-comment h1 {
+    font-size: 15px;
+    margin-bottom: 4px;
+
+}
+
+.comment-input {
+    font-size: 15px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 20px;
+    background-color: rgb(213, 174, 125);
+    width: 100%;
+    flex: 1;
+}
+
+.flex-comment-area {
+    display: flex;
+}
+
+#post-comment {
+    display: flex;
+}
+
+.post-the-comment {
+    background: rgb(213, 174, 125);
+    height: 30px;
+    width: 50px;
+    display: block;
+    border: none;
+    border-radius: 20px;
+    color: rgb(35, 32, 32);
+    margin-left: 5px;
+}
 .post-actions__widget:hover {
     background-color: #1f140458;
 }
