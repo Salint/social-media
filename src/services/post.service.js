@@ -22,13 +22,12 @@ class PostService {
 
 		return result;
 	}
-	async getPostsByUser(uid) {
+	async getPostsByUser(userid, profileId) {
 
-		const result = await DatabaseService.conn.query("SELECT * FROM posts WHERE userid=? ORDER BY postedOn DESC", [userid]);
+		const result = await DatabaseService.conn.query("SELECT * FROM posts WHERE userid=? ORDER BY postedOn DESC", [profileId]);
 
 		for(let i = 0; i < result.length; i++) {
-			result[i].author = await userService.getUserProfile(result[i].userid);
-			result[i].isLiked = await this.isPostLiked(uid, result[i].id);
+			result[i].isLiked = await this.isPostLiked(userid, result[i].id);
 			result[i].comments = await this.getComments(result[i].id);
 		}
 

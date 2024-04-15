@@ -1,6 +1,7 @@
 const { Router } = require("express");
 const UserService = require("../services/user.service");
 const ErrorEx = require("../util/ErrorEx");
+const PostService = require("../services/post.service");
 
 const UserController = Router();
 
@@ -12,15 +13,19 @@ UserController.get("/:userid", async function (req, res) {
 
 	try {
 		const userService = new UserService();
+		const postService = new PostService();
+
 		const profile = await userService.getUserProfile(userid);
+		const userProfile = await userService.getUserProfile(res.locals.userid);
+		const posts = await postService.getPostsByUser(res.locals.userid, userid);
 		
 		if(userid == res.locals.userid) {
-			res.render("myProfile", { profile });
+			res.render("myProfile", { profile, posts });
 		}
 		else {
 			const isFollowing = await userService.isFollowing(res.locals.userid, userid);
 
-			res.render("profile", { profile, isFollowing });
+			res.render("profile", { profile, userProfile, isFollowing, posts });
 		}
 	}
 	catch(error) {

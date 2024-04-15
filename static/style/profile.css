@@ -87,14 +87,14 @@ p {
 }
 
 
-#users-post {
+.users-post {
 
     border-top: 10px;
     border-radius: 10px;
     width: fit-content;
     padding: 10px;
     width: 400px;
-    margin: 0 auto;
+    margin: 10px auto;
     background-color: rgb(157, 128, 91);
 
 }
@@ -144,6 +144,7 @@ p {
     font-size: 15px;
     color: rgb(76, 47, 10);
     font-weight: 100;
+    margin-top: -10px;
 }
 
 .post-content {
@@ -156,6 +157,7 @@ p {
     border-radius: 5px;
     resize: none;
     text-align: left;
+    margin-top: -10px;
 }
 
 
@@ -186,6 +188,86 @@ form {
     margin-bottom: 0%;
 }
 
+.comment {
+    display: flex;
+    width: 100%;
+    background: rgb(213, 174, 125);
+    margin-top: 10px;
+    align-items: center;
+    padding: 10px;
+    text-align: left;
+    border-radius: 10px;
+}
+.comment .comment-img img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.comment .comment-content {
+    flex: 1;
+    margin-left: 10px;
+}
+.comment .comment-content h1 {
+    font-size: 13px;
+    color: rgb(76, 47, 10);
+    margin: 0;
+}
+.comment .comment-content p {
+    font-size: 13px;
+    margin: 0;
+}
+
+.comment-box {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.comment-box img {
+    width: 50px;
+    height: 50px;
+}
+.user-comment {
+    text-align: left;
+    margin-left: 10px;
+    flex: 1;
+
+}
+
+.user-comment h1 {
+    font-size: 15px;
+    margin-bottom: 4px;
+
+}
+
+.comment-input {
+    font-size: 15px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 20px;
+    background-color: rgb(213, 174, 125);
+    width: 100%;
+    flex: 1;
+}
+
+.flex-comment-area {
+    display: flex;
+}
+
+#post-comment {
+    display: flex;
+}
+
+.post-the-comment {
+    background: rgb(213, 174, 125);
+    height: 30px;
+    width: 50px;
+    display: block;
+    border: none;
+    border-radius: 20px;
+    color: rgb(35, 32, 32);
+    margin-left: 5px;
+}
 @media (max-width: 900px) {
     .container {
         width: 90%;
