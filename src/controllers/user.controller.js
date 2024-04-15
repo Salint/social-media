@@ -4,15 +4,24 @@ const ErrorEx = require("../util/ErrorEx");
 
 const UserController = Router();
 
+UserController.get("/", async function (req, res) {
+	res.redirect("/user/" + res.locals.userid);
+});
 UserController.get("/:userid", async function (req, res) {
 	const { userid } = req.params;
 
 	try {
 		const userService = new UserService();
 		const profile = await userService.getUserProfile(userid);
-		const isFollowing = await userService.isFollowing(res.locals.userid, userid);
+		
+		if(userid == res.locals.userid) {
+			res.render("myProfile", { profile });
+		}
+		else {
+			const isFollowing = await userService.isFollowing(res.locals.userid, userid);
 
-		res.render("profile", { profile, isFollowing });
+			res.render("profile", { profile, isFollowing });
+		}
 	}
 	catch(error) {
 		if(error instanceof ErrorEx) {
