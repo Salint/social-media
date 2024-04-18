@@ -1,32 +1,32 @@
-CREATE TABLE Users (
+CREATE TABLE users (
 	`id` INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	`username` VARCHAR(24) NOT NULL UNIQUE,
 	`password` VARCHAR(1024) NOT NULL,
 	`email` VARCHAR(256) NOT NULL,
 	`bio` VARCHAR(256) NOT NULL
 );
-CREATE TABLE Sessions (
+CREATE TABLE sessions (
 	`id` VARCHAR(256) NOT NULL UNIQUE,
-	`userid` INT(11) REFERENCES Users(id)
+	`userid` INT(11) REFERENCES users(id)
 );
-CREATE TABLE Posts (
+CREATE TABLE posts (
 	`id` INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	`userid` INT(11) REFERENCES Users(id),
+	`userid` INT(11) REFERENCES users(id),
 	`content` VARCHAR(1024) NOT NULL,
 	`postedOn` TIMESTAMP NOT NULL
 );
 CREATE TABLE Follows (
-	`followerId` INT(11) REFERENCES Users(id),
-	`followingId` INT(11) REFERENCES Users(id)
+	`followerId` INT(11) REFERENCES users(id),
+	`followingId` INT(11) REFERENCES users(id)
 );
-CREATE TABLE Likes (
-	`userid` INT(11) REFERENCES Users(id),
-	`postid` INT(11) REFERENCES Posts(id)
+CREATE TABLE likes (
+	`userid` INT(11) REFERENCES users(id),
+	`postid` INT(11) REFERENCES posts(id)
 );
-CREATE TABLE Comments (
+CREATE TABLE comments (
 	`id` INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	`userid` INT(11) REFERENCES Users(id),
-	`postid` INT(11) REFERENCES Posts(id),
+	`userid` INT(11) REFERENCES users(id),
+	`postid` INT(11) REFERENCES posts(id),
 	`content` VARCHAR(1024) NOT NULL,
 	`postedOn` TIMESTAMP NOT NULL
 );
