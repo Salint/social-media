@@ -15,8 +15,6 @@ function Main() {
 		throw new Error("Please specify a DB_HOST environment variable.");
 	else if(!process.env.DB_USERNAME)
 		throw new Error("Please specify a DB_USERNAME environment variable.");
-	else if(!process.env.DB_PASSWORD)
-		throw new Error("Please specify a DB_PASSWORD environment variable.");
 	else if(!process.env.DB_NAME)
 		throw new Error("Please specify a DB_NAME environment variable.");
 
