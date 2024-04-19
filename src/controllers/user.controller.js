@@ -8,6 +8,31 @@ const UserController = Router();
 UserController.get("/", async function (req, res) {
 	res.redirect("/user/" + res.locals.userid);
 });
+
+UserController.get("/edit", async function (req, res) {
+	const { message } = req.query;
+
+	try {
+		const user = await (new UserService).getUserProfile(res.locals.userid);
+		
+		res.render("edit", {
+			message, 
+			...user
+		});
+	}
+	catch(error) {
+		if(error instanceof ErrorEx) {
+			res.status(error.statusCode).send({
+				message: error.message,
+				code: error.code
+			});
+		}
+		else {
+			console.log(error);
+			res.status(500).send("Server Error. Please try again later.");
+		}
+	}
+});
 UserController.get("/search", async function(req, res) {
 
 	const { q } = req.query;
