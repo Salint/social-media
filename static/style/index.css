@@ -54,7 +54,7 @@ label {
 .profile {
     border-radius: 50%;
 
-    border: 5px solid rgb(91, 63, 25);
+    border: 2px solid rgb(126, 126, 126);
     cursor: pointer;
     height: 50px;
     width: 50px;
@@ -119,9 +119,9 @@ label {
     margin: 2 auto;
     text-align: center;
     padding: 10px;
-    width: 400px;
-    background-color: rgb(157, 128, 91);
-
+    width: 500px;
+    background: rgb(226, 226, 226);
+	border: 1px solid rgb(168, 168, 168);
 }
 
 .container {
@@ -136,16 +136,17 @@ label {
 .reactions p {
     margin-left: 10px;
     font-weight: 600;
+	color: rgb(228, 44, 44);
 }
 .comment {
     display: flex;
     width: 100%;
-    background: rgb(213, 174, 125);
-    margin-top: 10px;
     align-items: center;
-    padding: 10px;
+    padding: 10px 0;
     text-align: left;
-    border-radius: 10px;
+}
+.comment + .comment {
+	border-top: 1px solid rgb(202, 202, 202);
 }
 .comment .comment-img img {
     width: 40px;
@@ -157,7 +158,7 @@ label {
 }
 .comment .comment-content h1 {
     font-size: 13px;
-    color: rgb(76, 47, 10);
+    color: rgb(65, 65, 65);
 }
 .comment .comment-content p {
     font-size: 13px;
@@ -186,8 +187,8 @@ label {
     font-size: 15px;
     padding: 5px 10px;
     border: none;
-    border-radius: 20px;
-    background-color: rgb(213, 174, 125);
+    border-radius: 5px;
+    background-color: rgb(201, 201, 201);
     width: 100%;
     flex: 1;
 }
@@ -201,13 +202,13 @@ label {
 }
 
 .post-the-comment {
-    background: rgb(213, 174, 125);
+    background: rgb(228, 44, 44);
     height: 30px;
     width: 50px;
     display: block;
     border: none;
-    border-radius: 20px;
-    color: rgb(35, 32, 32);
+    border-radius: 5px;
+    color: white;
     margin-left: 5px;
 }
 
@@ -217,7 +218,8 @@ label {
     margin: 0;
     padding: 0;
     cursor: pointer;
-    background: rgb(213, 174, 125);
+    background: rgb(228, 44, 44);
+	color: white;
     padding: 5px 10px;
     border-radius: 5px;
 }
@@ -251,6 +253,9 @@ label {
 
 .post-content {
     text-align: left;
+	background: none;
+	padding: 0;
+	margin: -10px 0 20px 0;
 }
 
 #buttons {
