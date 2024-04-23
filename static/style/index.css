@@ -110,7 +110,7 @@ label {
     border-top: 10px;
     border-radius: 10px;
     width: fit-content;
-    margin: 2 auto;
+    margin: 10px auto;
     text-align: center;
     padding: 10px;
     width: 500px;
@@ -229,7 +229,7 @@ label {
 
 .user-text h2 {
     font-size: 15px;
-    color: rgb(76, 47, 10);
+    color: black;
     font-weight: 100;
 }
 
@@ -258,9 +258,6 @@ label {
     flex: 1;
 }
 
-* {
-    box-sizing: border-box;
-}
 
 form.example {
     display: flex;
