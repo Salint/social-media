@@ -182,9 +182,6 @@ h1 {
     font-size: l;
 }
 
-
-
-
 .follow {
     background-color: rgb(228, 44, 44);
     border: none;
@@ -201,7 +198,7 @@ h1 {
 }
 
 .follow:hover {
-    background-color: rgb(172, 147, 117);
+    background-color: rgb(136, 16, 16);
 }
 
 
