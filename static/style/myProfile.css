@@ -220,10 +220,12 @@ h1 {
     width: 600px;
     border-radius: 6px;
     box-shadow: 0 1px 2px 1px rgba(130, 130, 130, 0.1);
-    background-color: #f5ddb1;
+    
+    background: rgb(226, 226, 226);
     margin:  20px auto;
     overflow: hidden;
     margin-bottom: 30px;
+	padding: 5px;
 }
 
 .widget-post__content {
@@ -232,37 +234,40 @@ h1 {
 }
 
 .widget-post__textarea {
-    background-image: linear-gradient(to right, rgba(227, 197, 163, 0.334), rgba(181, 150, 66, 0.345));
+	background-color: rgb(201, 201, 201);
     width: 100%;
     height: 100%;
     font-size: larger;
     border: none;
     resize: none;
+	padding: 10px;
 }
 
 .post-actions__widget {
-    background-color: #1f140415;
-    color: #d0a690;
+    color: white;
     width: 100%;
     height: 100%;
     text-align: center;
     margin-top: 4px;
     display: flex;
     align-items: center;
+	background: rgb(228, 44, 44);
 }
 
 .post-actions__publish {
-        position: relative;
+    position: relative;
     padding: .5em 1em;
     background-color: transparent;
     border: none;
     cursor: pointer;
     display: block;
     width: 120px;
-    height: 30px;
+    height: 40px;
     text-align: center;
     align-items: center;
     margin:0 auto;
+	color: white;
+	font-size: 15px;
 }
 
 .users-post {
