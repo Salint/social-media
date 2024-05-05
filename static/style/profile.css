@@ -7,13 +7,16 @@
 }
 
 body {
-    background-image: linear-gradient(to right, rgba(255, 0, 0, 0), rgba(125, 117, 46, 0.345));
+
+	background: rgb(240, 240, 240);
 }
+
 
 #navbar {
     display: flex;
     align-items: center;
     padding: 10px 20px;
+    background: rgb(226, 226, 226);
     border-bottom: 1px solid rgb(201, 201, 201);
 }
 
@@ -23,34 +26,24 @@ body {
 #navbar .nav-flex a {
     text-decoration: none;
     font-size: 25px;
-    color: rgb(76, 47, 10);
-    font-family: cursive;
+    color: black;
+	font-family: cursive;
 }
 #navbar #search-flex {
     display: flex;
     flex: 1;
     justify-content: center;
     align-items: center;
-
 }
 
 #navbar #search-flex label {
     font-size: 30px;
 }
 
-#navbar #search {
-    margin-left: 10px;
-    font-size: 15px;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 20px;
-    background-color: rgb(213, 174, 125);
-}
-
 #navbar .profile {
     border-radius: 50%;
 
-    border: 5px solid rgb(91, 63, 25);
+    border: 2px solid rgb(199, 199, 199);
     cursor: pointer;
     height: 50px;
     width: 50px;
@@ -68,16 +61,7 @@ body {
     padding: 0;
 }
 
-#logOut {
-    border-radius: 50%;
-    border-style: solid;
-    height: 50px;
-    width: 50px;
-    margin: 0;
-    padding: 0;
-    margin-left: 10px;
-    background-color: rgb(157, 128, 91);
-}
+
 
 #navbar #buttons {
     display: flex;
@@ -86,31 +70,55 @@ body {
 }
 
 
+#navbar #logOut {
+    border-radius: 50%;
+	border: none;
+    height: 50px;
+    width: 50px;
+    margin: 0;
+    padding: 0;
+    margin-left: 10px;
+	background-color: rgb(228, 44, 44);
+	color: white;
+	font-size: 18px;
+}
+
+
 form.example {
     display: flex;
+	border-radius: 10px;
+	overflow: hidden;
+	height: 50px;
+    background-color: rgb(201, 201, 201);
+	padding: 5px;
 }
 
 /* Style the search field */
 form.example input[type=text] {
-    padding: 10px;
     font-size: 17px;
-    border: 1px solid grey;
+	padding: 0 15px;
+	border: none;
     float: left;
-    width: 80%;
-    background: #f1f1f1;
+	flex: 1;
+    background-color: rgb(201, 201, 201);
+	outline: none;
 }
 
 /* Style the submit button */
 form.example button {
     float: left;
-    width: 20%;
+	width: 40px;
+	height: 40px;
     padding: 10px;
-    background: rgb(157, 128, 91);
+    background: rgb(228, 44, 44);
     color: white;
-    font-size: 17px;
-    border: 1px solid grey;
-    border-left: none;
+    font-size: 18px;
+    border-radius: 7px;
+	border: none;
     cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 form.example button:hover {
@@ -128,7 +136,6 @@ img {
 
     width: 150px;
     border-radius: 50%;
-    border: 2px solid rgb(76, 47, 10);
 }
 
 .container {
@@ -138,6 +145,9 @@ img {
 
 .image {
     flex: 1;
+}
+.image img {
+    border: 2px solid rgb(199, 199, 199);
 }
 
 #inline {
@@ -172,13 +182,10 @@ h1 {
     font-size: l;
 }
 
-
-
-
 .follow {
-    background-color: rgba(213, 173, 125, 0.848);
+    background-color: rgb(228, 44, 44);
     border: none;
-    color: rgb(7, 0, 0);
+    color: white;
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
@@ -191,7 +198,7 @@ h1 {
 }
 
 .follow:hover {
-    background-color: rgb(172, 147, 117);
+    background-color: rgb(136, 16, 16);
 }
 
 
@@ -200,10 +207,12 @@ h1 {
     border-top: 10px;
     border-radius: 10px;
     width: fit-content;
-    padding: 10px;
-    width: 400px;
     margin: 10px auto;
-    background-color: rgb(157, 128, 91);
+    text-align: center;
+    padding: 10px;
+    width: 500px;
+    background: rgb(226, 226, 226);
+	border: 1px solid rgb(168, 168, 168);
 
 }
 
@@ -220,6 +229,7 @@ h1 {
 .reactions p {
     margin-left: 10px;
     font-weight: 600;
+	color: rgb(228, 44, 44);
 }
 
 .action {
@@ -228,13 +238,10 @@ h1 {
     margin: 0;
     padding: 0;
     cursor: pointer;
-    background: rgb(213, 174, 125);
+    background: rgb(228, 44, 44);
+	color: white;
     padding: 5px 10px;
     border-radius: 5px;
-}
-
-.action:hover {
-    background-color: rgb(172, 147, 117);
 }
 
 .user-text {
@@ -249,21 +256,20 @@ h1 {
 
 .user-text h2 {
     font-size: 15px;
-    color: rgb(76, 47, 10);
+    color: black;
     font-weight: 100;
 }
 
 .post-content {
-    background: rgb(213, 174, 125);
     color: black;
     border: none;
     outline: none;
-    padding: 10px;
     width: 100%;
     border-radius: 5px;
     resize: none;
     text-align: left;
-    margin-top: -10px;
+	padding: 0;
+	margin: -10px 0 20px 0;
 }
 
 
@@ -273,9 +279,6 @@ h1 {
     flex: 1;
 }
 
-* {
-    box-sizing: border-box;
-}
 form {
     display: flex;
     align-items: center;
@@ -297,12 +300,12 @@ form {
 .comment {
     display: flex;
     width: 100%;
-    background: rgb(213, 174, 125);
-    margin-top: 10px;
     align-items: center;
-    padding: 10px;
+    padding: 10px 0;
     text-align: left;
-    border-radius: 10px;
+}
+.comment + .comment {
+	border-top: 1px solid rgb(202, 202, 202);
 }
 .comment .comment-img img {
     width: 40px;
@@ -315,7 +318,7 @@ form {
 }
 .comment .comment-content h1 {
     font-size: 13px;
-    color: rgb(76, 47, 10);
+    color: rgb(65, 65, 65);
     margin: 0;
 }
 .comment .comment-content p {
@@ -350,8 +353,8 @@ form {
     font-size: 15px;
     padding: 5px 10px;
     border: none;
-    border-radius: 20px;
-    background-color: rgb(213, 174, 125);
+    border-radius: 5px;
+    background-color: rgb(201, 201, 201);
     width: 100%;
     flex: 1;
 }
@@ -365,13 +368,13 @@ form {
 }
 
 .post-the-comment {
-    background: rgb(213, 174, 125);
+    background: rgb(228, 44, 44);
     height: 30px;
     width: 50px;
     display: block;
     border: none;
-    border-radius: 20px;
-    color: rgb(35, 32, 32);
+    border-radius: 5px;
+    color: white;
     margin-left: 5px;
 }
 @media (max-width: 900px) {
